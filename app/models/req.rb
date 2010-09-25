@@ -66,25 +66,6 @@ end
     categories.collect{|cat| ERB::Util.html_escape(cat.long_name)}.join(",").briefiate(100)
   end
 
-
-  def tweet(url)
-    if !twitter?
-      logger.info "No twitter requested for [#{id}:#{name}]"
-      return
-    end
-
-    twitter_name = Req.global_prefs.twitter_name
-    twitter_password = Req.global_prefs.plaintext_twitter_password
-    twitter_api = Req.global_prefs.twitter_api
-
-    twit = Twitter::Base.new(twitter_name,twitter_password, :api_host => twitter_api )
-    begin
-      twit.update("#{name}: #{url}")
-    rescue Twitter::CantConnect => e
-      logger.info "ERROR Twitter::CantConnect for [#{id}:#{name}] (" + e.to_s + ")"
-    end
-  end
-
   def has_accepted_bid?
     a = false
     bids.each {|bid| a = true if bid.accepted_at != nil }
