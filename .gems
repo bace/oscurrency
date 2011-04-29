@@ -10,5 +10,5 @@ eventmachine
 aws-s3
 rmagick
 rack-openid
-rails --version '= 2.3.2'
+rails --version '= 2.3.8'
 heroku
