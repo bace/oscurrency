@@ -1,3 +1,7 @@
+= SFBACE 
+
+The notes below are for Insoshi. SFBace has deviated from Isoshi in many respects, which are mostly undocuments.  You can use the guidelines below judiciously.
+
 = Insoshi social software
 
 NOTE: If you downloaded a zipped archive of Insoshi, we strongly encourage you to clone the Insoshi Git repository instead.  See the instructions below, and also see

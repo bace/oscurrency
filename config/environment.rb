@@ -63,26 +63,27 @@ Rails::Initializer.run do |config|
   #                                    :source => 'http://gems.github.com'
   # rake dependencies
 
-#  config.gem 'rack', :version => '>= 1.1.0'
-  config.gem 'texticle'
-  config.gem 'oauth', :version => '>= 0.3.6'
-  config.gem 'chronic'
-  # add source:
-  # `gem sources -a http://gems.github.com`
-  config.gem 'rubyist-aasm', :lib => 'aasm'
-  #config.gem 'aasm'
-  # installed with `rake gems:install`
-  config.gem 'twitter', :version => '>= 0.8.4'
-  config.gem 'ruby-openid', :lib => 'openid', :version => '>= 2.1.6'
-  config.gem 'rack-openid', :lib => 'rack/openid', :version => '>= 1.0.1'
-  config.gem 'starling-starling', :lib => 'starling'
-  #config.gem 'starling'
-  config.gem 'feed-normalizer'
-  config.gem 'json'
-  config.gem 'heroku'
-  config.gem 'rmagick', :lib => 'RMagick'
-  config.gem 'aws-s3', :lib => 'aws/s3'
-  config.gem 'heroku'
+# commented out for Bundler
+# #  config.gem 'rack', :version => '>= 1.1.0'
+#   config.gem 'texticle'
+#   config.gem 'oauth', :version => '>= 0.3.6'
+#   config.gem 'chronic'
+#   # add source:
+#   # `gem sources -a http://gems.github.com`
+#   config.gem 'rubyist-aasm', :lib => 'aasm'
+#   #config.gem 'aasm'
+#   # installed with `rake gems:install`
+#   config.gem 'twitter', :version => '>= 0.8.4'
+#   config.gem 'ruby-openid', :lib => 'openid', :version => '>= 2.1.6'
+#   config.gem 'rack-openid', :lib => 'rack/openid', :version => '>= 1.0.1'
+#   config.gem 'starling-starling', :lib => 'starling'
+#   #config.gem 'starling'
+#   config.gem 'feed-normalizer'
+#   config.gem 'json'
+#   config.gem 'heroku'
+#   config.gem 'rmagick', :lib => 'RMagick'
+#   config.gem 'aws-s3', :lib => 'aws/s3'
+#   config.gem 'heroku'
 
   config.action_controller.session = {
     :session_key => '_oscurrency_session',
