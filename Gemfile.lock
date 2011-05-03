@@ -55,6 +55,7 @@ GEM
     rake (0.8.7)
     rest-client (1.6.1)
       mime-types (>= 1.16)
+    rmagick (2.13.1)
     ruby-hmac (0.4.0)
     ruby-openid (2.1.8)
     rubyist-aasm (2.1.1)
@@ -85,6 +86,7 @@ DEPENDENCIES
   pg
   rack-openid
   rails (= 2.3.8)
+  rmagick
   rubyist-aasm
   starling-starling
   texticle
