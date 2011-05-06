@@ -16,9 +16,8 @@ gem "heroku"
 gem "json"
 
 source "http://gems.github.com"
-gem "rubyist-aasm" 
+gem "rubyist-aasm", :require => "aasm"
 gem "starling-starling", :require => "starling"
-
 
 #  config.gem 'ruby-openid', :lib => 'openid', :version => '>= 2.1.6'
 #  config.gem 'rmagick', :lib => 'RMagick'
