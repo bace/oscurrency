@@ -8,8 +8,10 @@ class CreateLocalEncryptionKeys < ActiveRecord::Migration
   def self.up
 
     begin
-      drop_table :local_encryption_keys
-    end rescue nil
+# I can't get the rescue to work, so comment this out
+#      drop_table :local_encryption_keys
+    rescue
+    end
 
     create_table :local_encryption_keys do |t|
       t.text :rsa_private_key

@@ -1,5 +1,5 @@
 source :gemcutter	
-gem "rails", '= 2.3.8'
+gem "rails", '= 2.3.11'
 #gem "rack", '= 1.2.2'   #Heroku seems to force this
 gem "pg"		
 gem "oauth", '= 0.3.6'
