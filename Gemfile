@@ -14,9 +14,10 @@ gem "rmagick"  # causing trouble, beware
 gem "rack-openid"
 gem "heroku"
 gem "json"
+gem "aasm"
 
 source "http://gems.github.com"
-gem "rubyist-aasm", :require => "aasm"
+#gem "rubyist-aasm", :require => "aasm"
 gem "starling-starling", :require => "starling"
 
 #  config.gem 'ruby-openid', :lib => 'openid', :version => '>= 2.1.6'
