@@ -98,9 +98,16 @@ pre {
   padding: 1em;
 }
 a:link,a:visited {
-  color: #009908;
+  /* color: #009908; */
+  color: #482;
   font-weight: bold;
   text-decoration: none;
+}
+a:link {
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
 }
 /* Specific elements */
 p.welcome {

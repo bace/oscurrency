@@ -1,25 +1,17 @@
 <div class="welcome">
+<!--
   <h3>With BACE Timebank, the currency is time, and everyone’s time is equal.</h3>
 
   <p>The BACE Timebank is like a local community bank, but we keep track of
   time. For every hour you spend doing something for someone in your
   community, you earn one hour to use to have someone do something for you. It
   is an alternative way to give and receive resources. It’s that simple. <%= link_to "Sign up now!", signup_path %></p>
-
-  <h3>Get Involved</h3>
-
+-->
+  <h2>Get Involved</h2>
   <ul>
-    <li>Visit the BACE wiki: *http://wiki.sfbace.org/index.php?title=Timebank*</li>
-
-    <li>Attend an upcoming event or meeting. Our calendar is available on the
-    right side of the homepage *http://timebank.sfbace.org/*</li>
-
-    <li> Join our email listserve *
-    http://lists.sfbace.org/listinfo.cgi/timebank-sfbace.org*</li>
-
+    <li><a href="http://sfbace.org/">BACE Blog</a></li>
+    <li><a href="https://www.google.com/calendar/embed?src=sfbace.org_l15uc852l92nuvm42uqmfbqqgk%40group.calendar.google.com&ctz=America/Los_Angeles">Attend an upcoming event or meeting</a></li>
+    <li><a href="http://lists.sfbace.org/listinfo.cgi/timebank-sfbace.org">Join our email listserve</a></li>
   </ul>
 </div>
-<% unless global_prefs.gmail.blank? -%>
-<%= render :partial => 'shared/calendar', :object => global_prefs.gmail %>
-<%- end -%>
 <%= render :partial => 'shared/minifeed' %>
