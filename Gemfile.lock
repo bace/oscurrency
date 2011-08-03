@@ -2,7 +2,6 @@ GEM
   remote: http://rubygems.org/
   remote: http://gems.github.com/
   specs:
-    aasm (2.2.0)
     actionmailer (2.3.11)
       actionpack (= 2.3.11)
     actionpack (2.3.11)
@@ -59,6 +58,7 @@ GEM
     rmagick (2.13.1)
     ruby-hmac (0.4.0)
     ruby-openid (2.1.8)
+    rubyist-aasm (2.1.1)
     simple-rss (1.2.3)
     starling-starling (0.10.0)
       eventmachine (>= 0.12.0)
@@ -75,7 +75,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  aasm
   aws-s3
   chronic
   eventmachine
@@ -88,6 +87,7 @@ DEPENDENCIES
   rack-openid
   rails (= 2.3.11)
   rmagick
+  rubyist-aasm
   starling-starling
   texticle
   twitter (= 0.8.4)
