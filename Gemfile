@@ -1,5 +1,5 @@
 source :gemcutter	
-gem "rails", '= 2.3.8'
+gem "rails", '= 2.3.11'
 #gem "rack", '= 1.2.2'   #Heroku seems to force this
 gem "pg"		
 gem "oauth", '= 0.3.6'
@@ -14,9 +14,10 @@ gem "rmagick"  # causing trouble, beware
 gem "rack-openid"
 gem "heroku"
 gem "json"
+gem "aasm"
 
 source "http://gems.github.com"
-gem "rubyist-aasm", :require => "aasm"
+#gem "rubyist-aasm", :require => "aasm"
 gem "starling-starling", :require => "starling"
 
 #  config.gem 'ruby-openid', :lib => 'openid', :version => '>= 2.1.6'

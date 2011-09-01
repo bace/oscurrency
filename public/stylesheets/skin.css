@@ -102,7 +102,8 @@ div.status-btn input.disabled, div.status-btn input.disabled:hover {
 /* Header */
 #header {
   position: relative;
-  height: 80px;
+  /* height: 80px; */
+  height: 110px; /*CG*/
 }
 
 #header h1 {
@@ -119,9 +120,12 @@ font-size:1.3em;
 
 /* Header-nav */
 #nav {
-  margin: 14px 0 0 0;
+  /*margin: 14px 0 0 0;*/
+  margin: 14px 0 0 210px; /*CG*/
   width: 634px;
-  float: right;
+  /* float: right; */
+  position: absolute; /*CG*/
+  top: 60px; /*CG*/
 }
 #nav li {
   background: #009908  bottom repeat-x;
@@ -595,7 +599,8 @@ li.req .profile-image .name
   font-size:	14px;
   font-weight:	400;
   font-style:	normal;
-  color:	#009908;
+  /*color:	#009908; */
+  color:	#555214;  /*CG*/
   margin-top: 20px;
   line-height:	19.6px;
 }

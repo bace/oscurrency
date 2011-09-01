@@ -1,8 +1,16 @@
 <%- column_div :type => :primary do -%>
 <div class="welcome">
- <h3>Welcome to the BACE Timebank</h3><p>Having a hard time getting your basic needs met?</p><p>Want to earn services or goods for doing something you love?</p><p>Want to be able to share in the untapped resources of your community?</p><p>It's easy! Give what you want, get what you need. And make some friends inthe process!</p><p>Need help with yard work or home improvements? Want to learn a new skill?Need a ride to an appointment? Our timebank may be your solution.</p><p>You don’t need money, just time to help someone else.</p>
+ <h2>Welcome to the BACE Timebank</h2>
+<!--
+<p>Having a hard time getting your basic needs met?</p><p>Want to earn services or goods for doing something you love?</p><p>Want to be able to share in the untapped resources of your community?</p><p>It's easy! Give what you want, get what you need. And make some friends inthe process!</p><p>Need help with yard work or home improvements? Want to learn a new skill?Need a ride to an appointment? Our timebank may be your solution.</p><p>You don’t need money, just time to help someone else.</p>
  <%= link_to "Sign up to start timebanking now!", signup_path %>
-
+-->
+  <h4>With BACE Timebank, the currency is time, and everyone’s time is equal.</h4>
+  <p>The BACE Timebank is like a local community bank, but we keep track of
+  time. For every hour you spend doing something for someone in your
+  community, you earn one hour to use to have someone do something for you. It
+  is an alternative way to give and receive resources. It’s that simple. 
+  <%= link_to "Sign up now!", signup_path %></p>
 </div>
 <%= render :partial => 'blog' %>
 <%- end -%>

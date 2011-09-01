@@ -52,7 +52,8 @@ def create_people
                               :password => password, 
                               :password_confirmation => password,
                               :name => full_name,
-                              :description => @lipsum)
+                              :description => @lipsum,
+			      :accept_agreement => true)
       person.last_logged_in_at = Time.now
       person.save
       Photo.unsafe_create!(:uploaded_data => uploaded_file(photos[i], 'image/jpg'),
