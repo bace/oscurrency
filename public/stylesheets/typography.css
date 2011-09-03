@@ -213,9 +213,9 @@ a.show-follow:visited {
 
 /* Forms */
 form {
-  border-bottom: 1px solid #ccc;
-  padding-bottom: 1em;
-  margin-bottom: 2em; 
+/*  border-bottom: 1px solid #ccc; */
+/*  padding-bottom: 1em; */
+/*  margin-bottom: 2em; */
 }
 li form {
   float: right;
