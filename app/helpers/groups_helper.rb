@@ -36,7 +36,6 @@ module GroupsHelper
     modes = []
     modes << ["Public",0]
     modes << ["Private",1]
-    modes << ["Hidden", 2]
     return modes
   end
   

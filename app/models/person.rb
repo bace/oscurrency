@@ -113,15 +113,9 @@ class Person < ActiveRecord::Base
   
   has_many :own_groups, :class_name => "Group", :foreign_key => "person_id",
     :order => "name ASC"
-  has_many :own_not_hidden_groups, :class_name => "Group", 
-    :foreign_key => "person_id", :conditions => "mode != 2", :order => "name ASC"
-  has_many :own_hidden_groups, :class_name => "Group", 
-    :foreign_key => "person_id", :conditions => "mode = 2", :order => "name ASC"
   has_many :memberships
   has_many :groups, :through => :memberships, :source => :group, 
     :conditions => "status = 0", :order => "name ASC"
-  has_many :groups_not_hidden, :through => :memberships, :source => :group, 
-    :conditions => "status = 0 and mode != 2", :order => "name ASC"
   
   has_many :events
   has_many :event_attendees

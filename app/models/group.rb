@@ -28,15 +28,13 @@ class Group < ActiveRecord::Base
   # GROUP modes
   PUBLIC = 0
   PRIVATE = 1
-  HIDDEN = 2
   
   class << self
 
     # Return not hidden groups
-    def not_hidden(page = 1)
+    def paginated(page = 1)
       paginate(:all, :page => page,
                      :per_page => RASTER_PER_PAGE,
-                     :conditions => ["mode = ? OR mode = ?", PUBLIC,PRIVATE],
                      :order => "name ASC")
     end
   end
@@ -49,10 +47,6 @@ class Group < ActiveRecord::Base
     self.mode == PRIVATE
   end
   
-  def hidden?
-    self.mode == HIDDEN
-  end
-  
   def owner?(person)
     self.owner == person
   end
@@ -62,9 +56,7 @@ class Group < ActiveRecord::Base
   end
  
   def is_viewable?(person)
-   self.public? or self.private? or person.admin? or 
-          self.owner?(person) or self.has_invited?(person) or
-          (self.hidden? and self.people.include?(person))
+   self.public? or self.private? or person.admin? or self.has_invited?(person)
   end
 
   ## Photo helpers
@@ -115,7 +107,7 @@ class Group < ActiveRecord::Base
   end
 
   def log_activity
-    if not self.hidden?
+    if not self.private?
       activity = Activity.create!(:item => self, :person => Person.find(self.person_id))
       add_activities(:activity => activity, :person => Person.find(self.person_id))
     end

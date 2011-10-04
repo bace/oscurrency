@@ -5,7 +5,7 @@ class GroupsController < ApplicationController
     :new_photo, :save_photo, :delete_photo]
   
   def index
-    @groups = Group.not_hidden(params[:page])
+    @groups = Group.paginated(params[:page])
 
     respond_to do |format|
       format.html
@@ -76,7 +76,7 @@ class GroupsController < ApplicationController
     @contacts = contacts_to_invite
 
     respond_to do |format|
-      if current_person.own_groups.include?(@group) and @group.hidden?
+      if current_person.own_groups.include?(@group)
         if @contacts.length == 0
           flash[:error] = "You have no contacts or you have invited all of them"
           format.html { redirect_to(group_path(@group)) }
@@ -171,7 +171,7 @@ class GroupsController < ApplicationController
   
   def contacts_to_invite
     current_person.contacts - 
-      Membership.find_all_by_group_id(current_person.own_hidden_groups).collect{|x| x.person}
+      Membership.find_all_by_group_id(current_person.own_groups).collect{|x| x.person}
   end
   
   def group_owner

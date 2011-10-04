@@ -87,7 +87,7 @@ class Membership < ActiveRecord::Base
         accepted_at = Time.now
         accept_one_side(person, group, accepted_at)
       end
-      unless Group.find(group).hidden?
+      unless Group.find(group).private?
         log_activity(mem(person, group))
       end
     end
