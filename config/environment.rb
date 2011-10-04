@@ -85,9 +85,11 @@ Rails::Initializer.run do |config|
 #   config.gem 'aws-s3', :lib => 'aws/s3'
 #   config.gem 'heroku'
 
+  secret = ENV['SECRET_SESSION'] || rand(36**64).to_s(36)
+
   config.action_controller.session = {
     :session_key => '_oscurrency_session',
-    :secret      => ENV['SESSION_SECRET']
+    :secret      => secret
   }
 
 end
