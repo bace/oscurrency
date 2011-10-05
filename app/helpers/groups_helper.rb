@@ -3,7 +3,11 @@ module GroupsHelper
   def group_owner?(person,group)
     person == group.owner
   end
-  
+
+  def viewable_group?(group)
+    group.public? or Membership.connected?(current_person,group) or current_person.admin?
+  end
+
   # Return a group's image link.
   # The default is to display the group's icon linked to the profile.
   def image_link(group, options = {})
