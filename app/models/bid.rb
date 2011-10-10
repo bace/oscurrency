@@ -20,7 +20,7 @@
 #
 
 class Bid < ActiveRecord::Base
-  before_validation_on_create :setup_estimated_hours
+  before_validation_on_create :setup_group_and_expiration
   after_validation_on_create :trigger_offered
 
   include ActionController::UrlWriter
@@ -89,7 +89,8 @@ class Bid < ActiveRecord::Base
     end
   end
 
-  def setup_estimated_hours
+  def setup_group_and_expiration
+    self.group = self.req.group
     if self.expiration_date.blank?
       self.expiration_date = 7.days.from_now
     else
