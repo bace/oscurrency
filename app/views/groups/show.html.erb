@@ -69,6 +69,27 @@
     <%= display @group.description %>
   </div>
   <% if viewable_group?(@group) %>
+
+    <h2>Requests</h2>
+
+    <%- if @reqs.empty? -%>
+        <h3 class="blankslate">No requests (yet!)</h3>
+    <%- else -%>
+      <ul class="list full">
+        <%= render :partial => 'reqs/req', :collection => @reqs, :locals => {:short => true} %>
+      </ul>
+    <%- end -%>
+
+    <h2>Offers</h2>
+
+    <%- if @offers.empty? -%> 
+      <h3 class="blankslate">No offers (yet!)</h3>
+    <%- else -%>
+      <ul class="list full">
+        <%= render :partial => 'offers/offer', :collection => @offers, :locals => {:short => true} %>
+      </ul>
+    <%- end -%>
+
     <h2>Discussion topics</h2>
     
     <ol class="list forum full">
@@ -82,10 +103,6 @@
         <%= submit_tag "Submit", :class => "button" %>
       </div>
     <% end %>
-    <h2>Recent Exchanges</h2>
-    <ul class="list activity full">
-      <%= render :partial => 'exchange', :collection => @group.exchanges %>
-    </ul>
   <%- end -%>
   
 <%- end -%>

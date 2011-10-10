@@ -18,6 +18,12 @@
   <%= f.label 'Estimated hours' %>
   <%= f.text_field :price, :size => 5 %>
 </div>
+<% if global_prefs.group_option? %>
+  <div class="form_row">
+    <label for="group_id">Group</label>
+    <%= collection_select( 'offer', 'group_id', @groups, :id, :name, { :include_blank => true } ) %>
+  </div>
+<%- end -%>
 <div class="form_row">
   <%= f.label :expiration_date %>
   <%= f.text_field :expiration_date, :size => 7 %>

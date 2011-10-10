@@ -7,6 +7,8 @@ class Group < ActiveRecord::Base
   has_many :photos, :dependent => :destroy, :order => "created_at"
   has_many :exchanges, :order => "created_at DESC"
   has_many :memberships, :dependent => :destroy
+  has_many :reqs
+  has_many :offers
   has_many :people, :through => :memberships, 
     :conditions => "status = 0", :order => "name DESC"
   has_many :pending_request, :through => :memberships, :source => "person",

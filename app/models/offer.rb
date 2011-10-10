@@ -10,6 +10,7 @@ class Offer < ActiveRecord::Base
   has_and_belongs_to_many :categories
   has_many :exchanges, :as => :metadata
   belongs_to :person
+  belongs_to :group
   attr_protected :person_id, :created_at, :updated_at
   validates_presence_of :name, :expiration_date
   after_create :notify_workers, :if => :notifications
@@ -24,12 +25,23 @@ class Offer < ActiveRecord::Base
 
   class << self
 
-    def current(page=1, category_id=nil)
-      today = DateTime.now
+    def conditions_for_public_view
+      ["(groups.mode = ? OR group_id IS NULL) AND available_count > ? AND expiration_date >= ?", 0, 0, DateTime.now]
+    end
+
+    def current_paginated(page=1, category_id=nil)
       if category_id
-        Category.find(category_id).offers.paginate(:all, :page => page, :conditions => ["available_count > ? AND expiration_date >= ?", 0, today], :order => 'created_at DESC')
+        Category.find(category_id).offers.paginate(:all, :page => page, :include => :group, :conditions => conditions_for_public_view, :order => 'offers.created_at DESC')
       else
-        Offer.paginate(:all, :page => page, :conditions => ["available_count > ? AND expiration_date >= ?", 0, today], :order => 'created_at DESC')
+        Offer.paginate(:all, :page => page, :include => :group, :conditions => conditions_for_public_view, :order => 'offers.created_at DESC')
+      end
+    end
+
+    def current(category_id=nil)
+      if category_id
+        Category.find(category_id).offers.all(:include => :group, :conditions => conditions_for_public_view, :order => 'offers.created_at DESC')
+      else
+        Offer.all(:include => :group, :conditions => conditions_for_public_view, :order => 'offers.created_at DESC')
       end
     end
   end
@@ -52,6 +64,10 @@ class Offer < ActiveRecord::Base
 
   def perform
     actually_notify_workers
+  end
+
+  def viewable?(person)
+    group.nil? || group.public? || Membership.exists?(person,group)
   end
 
   private

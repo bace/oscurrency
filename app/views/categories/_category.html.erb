@@ -4,16 +4,16 @@
 </td>
 
   <td class="categorynumbercell">
-    <% if category.current_and_active_reqs.length  > 0 -%>
+    <% if Req.current_and_active(category.id).length  > 0 -%>
     <a class="categoryMenuItem" href="/categories/<%= category.id %>/reqs">
-    <%= category.current_and_active_reqs.length %>
+    <%= Req.current_and_active(category.id).length %>
   </a>
     <% end -%>
   </td>
   <td class="categorynumbercell">
-    <% if category.offers.current.length  > 0 -%>
+    <% if category.offers.current_paginated.length  > 0 -%>
     <a class="categoryMenuItem" href="/categories/<%= category.id %>/offers">
-    <%= category.offers.current.length %>
+    <%= category.offers.current_paginated.length %>
   </a>
     <% end -%>
   </td>

@@ -33,6 +33,7 @@ class Bid < ActiveRecord::Base
 
   attr_protected :person_id, :created_at, :updated_at
   attr_protected :status_id, :state
+  attr_protected :group_id
 
   aasm_column :state
 

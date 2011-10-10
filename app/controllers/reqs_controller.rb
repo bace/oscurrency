@@ -1,20 +1,14 @@
 class ReqsController < ApplicationController
-  before_filter :login_required, :except => [:show, :index]
+  prepend_before_filter :login_required, :except =>[:index,:show]
+  prepend_before_filter :login_required, :only => [:show], :if => :private_group_req?
+  before_filter :group_membership_required, :only => [:show], :if => :private_group_req?
   before_filter :correct_person_and_no_accept_required, :only => [ :edit, :update ]
   before_filter :correct_person_and_no_commitment_required, :only => [ :destroy ]
 
   # GET /reqs
   # GET /reqs.xml
   def index
-    if params[:filter]
-      if "all" == params[:filter]
-        @reqs = Req.paginate(:all, :page => params[:page], :conditions => ["active = ?", true], :order => 'created_at DESC')
-      else
-        @reqs = Req.current_and_active(params[:page],params[:category_id])
-      end
-    else
-      @reqs = Req.current_and_active(params[:page],params[:category_id])
-    end
+    @reqs = Req.current_and_active_paginated(params[:page],params[:category_id])
 
     respond_to do |format|
       format.html # index.html.erb
@@ -25,7 +19,6 @@ class ReqsController < ApplicationController
   # GET /reqs/1
   # GET /reqs/1.xml
   def show
-    @req = Req.find(params[:id])
     @bid = Bid.new
     @bid.estimated_hours = @req.estimated_hours
 
@@ -40,6 +33,7 @@ class ReqsController < ApplicationController
   def new
     @req = Req.new
     @all_categories = Category.all
+    @groups = current_person.groups
 
     respond_to do |format|
       format.html # new.html.erb
@@ -110,7 +104,17 @@ class ReqsController < ApplicationController
     end
   end 
 
+  def private_group_req?
+    @req = Req.find(params[:id])
+    @req.group && @req.group.private?
+  end
+
   private
+
+  def group_membership_required
+    #login_required
+    redirect_to home_url unless @req.viewable?(current_person)
+  end
 
   def correct_person_and_no_accept_required
     request = Req.find(params[:id])
