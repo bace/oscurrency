@@ -28,6 +28,7 @@ class Bid < ActiveRecord::Base
 
   belongs_to :req
   belongs_to :person
+  belongs_to :group
   validates_presence_of :estimated_hours, :person_id
   attr_readonly :estimated_hours
 
