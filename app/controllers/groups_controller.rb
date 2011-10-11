@@ -99,7 +99,7 @@ class GroupsController < ApplicationController
       end
     end
     respond_to do |format|
-      flash[:notice] = "You have invite some of your contacts to '#{@group.name}'"
+      flash[:notice] = "You have invited some people to '#{@group.name}'"
       format.html { redirect_to(group_path(@group)) }
     end
   end
