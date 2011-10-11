@@ -190,7 +190,7 @@ class PeopleController < ApplicationController
 
   def invite
     @person = Person.find(params[:id])
-    @groups = current_person.own_groups
+    @groups = current_person.own_groups - @person.groups
   end
  
   def send_invite
