@@ -80,7 +80,7 @@ class GroupsController < ApplicationController
     respond_to do |format|
       if current_person.own_groups.include?(@group)
         if @contacts.length == 0
-          flash[:error] = "You have no contacts or you have invited all of them"
+          flash[:error] = "You have invited all of them"
           format.html { redirect_to(group_path(@group)) }
         end
         format.html
@@ -172,8 +172,7 @@ class GroupsController < ApplicationController
   private
   
   def contacts_to_invite
-    current_person.contacts - 
-      Membership.find_all_by_group_id(current_person.own_groups).collect{|x| x.person}
+    Person.all - @group.people
   end
   
   def group_owner
