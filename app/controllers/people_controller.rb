@@ -187,7 +187,22 @@ class PeopleController < ApplicationController
       format.html
     end
   end
-  
+
+  def invite
+    @person = Person.find(params[:id])
+    @groups = current_person.own_groups
+  end
+ 
+  def send_invite
+    @person = Person.find(params[:id])
+    @group = Group.find(params[:group_id])
+    if Membership.find_all_by_group_id(@group, :conditions => ['person_id = ?',@person.id]).empty?
+      Membership.invite(@person,@group)
+      flash[:success] = "Invitation sent"
+    end
+    redirect_to person_path(@person)
+  end
+
   def groups
     @person = Person.find(params[:id])
     @groups = @person.groups

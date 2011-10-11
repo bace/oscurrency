@@ -35,6 +35,9 @@
             <li><%= exchange_link @person %></li>
             <li><%= email_link @person %></li>
             <%= render :partial => 'account', :collection => @person.accounts %>
+            <%- if current_person.own_groups.length > 0 %>
+              <li><%= link_to "Invite to group", invite_person_path(@person) %>
+            <%- end -%>
           <%- end -%>
           <%- if current_person.admin? -%>
             <li>

@@ -49,6 +49,8 @@ ActionController::Routing::Routes.draw do |map|
                            :member => { :reply => :get, :undestroy => :put }
 
   map.resources :people, :member => { :verify_email => :get,
+                                      :invite => :get,
+                                      :send_invite => :post,
                                       :common_contacts => :get }
 
 
