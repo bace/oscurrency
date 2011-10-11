@@ -14,9 +14,9 @@
     <%= f.label :estimated_hours %>
     <%= f.text_field :estimated_hours, :size => 5 %>
   </div>
-  <% if global_prefs.group_option? %>
+  <% if global_prefs.group_option? && @groups.length > 0 %>
     <div class="form_row">
-      <label for="group_id">Group</label>
+      <label for="group_id">Optional: select to send to your group only</label>
       <%= collection_select( 'req', 'group_id', @groups, :id, :name, { :include_blank => true } ) %>
     </div>
   <%- end -%>
