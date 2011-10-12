@@ -29,7 +29,9 @@ function googleTranslateElementInit() {
         <h1>
         <%= global_prefs.app_name %>
         </h1>
-<!--	<%= render :partial => 'searches/mbox' -%>  -->
+        <%- if logged_in? -%>
+          <%= render :partial => 'searches/mbox' -%>
+        <%- end -%>
         <ul id="nav">
           <%- menu.each do |link| -%>
             <%= menu_li link %>

@@ -1,17 +1,14 @@
 <div class="welcome">
-<!--
-  <h3>With BACE Timebank, the currency is time, and everyone’s time is equal.</h3>
-
-  <p>The BACE Timebank is like a local community bank, but we keep track of
-  time. For every hour you spend doing something for someone in your
-  community, you earn one hour to use to have someone do something for you. It
-  is an alternative way to give and receive resources. It’s that simple. <%= link_to "Sign up now!", signup_path %></p>
--->
   <h2>Get Involved</h2>
   <ul>
-    <li><a href="http://sfbace.org/">BACE Blog</a></li>
-    <li><a href="https://www.google.com/calendar/embed?src=sfbace.org_l15uc852l92nuvm42uqmfbqqgk%40group.calendar.google.com&ctz=America/Los_Angeles">Attend an upcoming event or meeting</a></li>
-    <li><a href="http://lists.sfbace.org/listinfo.cgi/timebank-sfbace.org">Join our email listserve</a></li>
+    <!--<li><a href="http://sfbace.org/">BACE Blog</a></li>-->
+    <li><b>General meetings are 2nd Wednesdays at 8pm</b> at <a href="https://www.noisebridge.net/">Noisebridge</a>. Come at 7:30pm to learn more about the Timebank.</li>
+    <li><a href="https://www.google.com/calendar/embed?src=sfbace.org_l15uc852l92nuvm42uqmfbqqgk%40group.calendar.google.com&ctz=America/Los_Angeles">Calendar of Events</a></li>
+		<li><%= link_to "Signup", signup_path %> for the timebank and you'll automatically receive our newsletter.</li>
+    <li><a href="mailto:timebankinfo@sfbace.org">Email timebankinfo@sfbace.org</a> to find out how to get involved as a volunteer, intern, donor or partner organization.</li>
+    <li><a href="http://lists.sfbace.org/listinfo.cgi/timebank-sfbace.org">Join our email listserve</a> to participate in the internal workings of the timebank.</li>
   </ul>
 </div>
+<%= render :partial => 'shared/donate' %>
+<%= render :partial => 'shared/newsfeed' %>
 <%= render :partial => 'shared/minifeed' %>

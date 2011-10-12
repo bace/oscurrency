@@ -1,0 +1,60 @@
+<div class="welcome">
+  <h2>Latest News
+<!-- BEGIN Twitter Button -->
+    <iframe allowtransparency="true" frameborder="0" scrolling="no"
+     src="http://platform.twitter.com/widgets/follow_button.html?screen_name=timebanksf&button=grey&show_count=false&text_color=555214&link_color=448822"
+     style="width:70px; height:20px; position:relative; top:4px; left:70px;"></iframe>
+<!-- END Twitter Button -->
+  </h2>
+
+<!-- BEGIN Twitter Widget -->
+<script src="http://widgets.twimg.com/j/2/widget.js"></script>
+<script>
+new TWTR.Widget({
+  version: 2,
+  type: 'profile',
+  rpp: 3,
+  interval: 30000,
+  title: '',
+  subject: '',
+  width: 'auto',
+  height: 300,
+  theme: {
+    shell: {
+      background: 'transparent',
+      color: '#448822'
+    },
+    tweets: {
+      background: 'transparent',
+      color: '#555214',
+      links: '#448822'
+    }
+  },
+  features: {
+    scrollbar: false,
+    loop: false,
+    live: false,
+    hashtags: true,
+    timestamp: true,
+    avatars: true,
+    behavior: 'all'
+  }
+}).render().setUser('timebanksf').start();
+</script>
+<style>
+.twtr-hd { display:none; }
+.twtr-ft { display:none; }
+.twtr-widget {
+  font-family: Georgia,"Times New Roman",Times,serif !important;
+  font-size: 14px;
+  color: #555214;
+}
+.twtr-widget em, .twtr-widget .twtr-new-results {
+  font-size: 12px !important;
+}
+.twtr-widget em a {
+  color: #aa8822 !important;
+}
+</style>
+<!-- END Twitter Widget -->
+</div>
