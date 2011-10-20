@@ -111,12 +111,20 @@ div.status-btn input.disabled, div.status-btn input.disabled:hover {
   margin-top: 12px;
   margin-bottom: 12px;
   width: 450px;
-color:#fff;
-font-weight:bold;
-font-family:Trebuchet MS;
-font-size:1.3em;
+	color:#fff;
+	font-weight:bold;
+	font-family:Trebuchet MS;
+	font-size:1.3em;
 }
 
+#google_translate_element {
+	position:absolute;
+	/* top:82px; */
+	/* top:85px; */
+  top:0;
+	right:0;
+	text-align:right;
+}
 
 /* Header-nav */
 #nav {

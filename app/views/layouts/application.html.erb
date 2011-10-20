@@ -19,13 +19,6 @@
   <body class="<%= @body %>">
     <div id="header-wrap">
       <div id="header">
-<div id="google_translate_element"></div><script>
-function googleTranslateElementInit() {
-  new google.translate.TranslateElement({
-    pageLanguage: 'en'
-  }, 'google_translate_element');
-}
-</script><script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
         <h1>
         <%= global_prefs.app_name %>
         </h1>
@@ -36,9 +29,18 @@ function googleTranslateElementInit() {
           <%- menu.each do |link| -%>
             <%= menu_li link %>
           <%- end -%>
-
         </ul>
-        
+<div id="google_translate_element"></div>
+<script>
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({
+    pageLanguage: 'en',
+    includedLanguages: 'zh-CN,en,zh-TW,tl,es,vi',
+    layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+  }, 'google_translate_element');
+}
+</script><script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
           <p class="welcome">
             <%- if logged_in? -%>
               Welcome, <%= h current_person.name %>!
