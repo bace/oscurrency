@@ -23,6 +23,7 @@ class Exchange < ActiveRecord::Base
   validates_presence_of :customer, :worker, :amount, :metadata
 
   attr_accessible :amount, :group_id
+  attr_accessible :customer_id
 
   after_create :log_activity
   after_create :decrement_offer_available_count

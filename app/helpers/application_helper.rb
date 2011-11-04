@@ -42,15 +42,16 @@ module ApplicationHelper
       home =    menu_element("Home", home_path)
       spam = menu_element("eNews", admin_broadcast_emails_path)
       people =  menu_element("People", admin_people_path)
+      exchanges =  menu_element("Ledger", admin_exchanges_path)
       feed = menu_element("Feed", admin_feed_posts_path)
       forums =  menu_element(inflect("Forum", Forum.count),
                              admin_forums_path)
       preferences = menu_element("Prefs", admin_preferences_path)
       if global_prefs.group_option?
         groups = menu_element("Groups", admin_groups_path)
-        links = [home, spam, people, feed, forums, groups, preferences]
+        links = [home, spam, people, exchanges, feed, forums, groups, preferences]
       else
-        links = [home, spam, people, feed, forums, preferences]
+        links = [home, spam, people, exchanges, feed, forums, preferences]
       end
     else
       #links = [home, people]
@@ -147,6 +148,12 @@ module ApplicationHelper
     concat(content)
   end
 
+  def construct_link(img,action,path,opts)
+    str = link_to(img,path,opts)
+    str << raw('&nbsp;')
+    str << link_to_unless_current(action, path, opts)
+  end
+
   def account_link(account, options = {})
     path = person_account_path(account.person,account) # XXX link to transactions
     img = image_tag("icons/bargraph.gif")
@@ -161,9 +168,7 @@ module ApplicationHelper
       
     end
     opts = {}
-    str = link_to(img,path, opts)
-    str << raw('&nbsp;')
-    str << link_to_unless_current(action, path, opts)
+    str = construct_link(img,action,path,opts)
   end
 
   def exchange_link(person, options = {})
@@ -171,9 +176,32 @@ module ApplicationHelper
     path = new_person_exchange_path(person)
     opts = {}
     action = "Give credit"
-    str = link_to(img,path,opts)
-    str << raw('&nbsp;')
-    str << link_to_unless_current(action, path, opts)
+    str = construct_link(img,action,path,opts)
+  end
+
+  def group_invite_link(person, options = {})
+    img = image_tag("icons/add.gif")
+    path = invite_person_path(person)
+    opts = {}
+    action = "Invite to group"
+    str = construct_link(img,action,path,opts)
+  end
+
+  def deactivate_link(person, options = {})
+    img = image_tag("icons/play.gif")
+    img = person.deactivated? ? image_tag("icons/play.gif") : image_tag("icons/pause.gif")
+    path = person_path(person, :task => 'deactivated')
+    opts = {:method => :put}
+    action = person.deactivated? ? "activate" : "deactivate"
+    str = construct_link(img,action,path,opts)
+  end
+
+  def promote_to_accountant_link(person, options = {})
+    img = image_tag("icons/calculator.gif")
+    path = person_path(person, :task => 'accountant')
+    opts = {:method => :put}
+    action = person.accountant? ? "demote" : "promote to accountant"
+    str = construct_link(img,action,path,opts)
   end
 
   def email_link(person, options = {})
@@ -186,9 +214,7 @@ module ApplicationHelper
     img = image_tag("icons/email.gif")
     action = reply.nil? ? "Send a message" : "Send reply"
     opts = { :class => 'email-link' }
-    str = link_to(img, path, opts)
-    str << raw('&nbsp;')
-    str << link_to_unless_current(action, path, opts)
+    str = construct_link(img,action,path,opts)
   end
 
   # Return a formatting note (depends on the presence of a Markdown library)

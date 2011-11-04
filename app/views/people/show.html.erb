@@ -34,18 +34,14 @@
           <%- if logged_in? -%>
             <li><%= exchange_link @person %></li>
             <li><%= email_link @person %></li>
-            <%= render :partial => 'account', :collection => @person.accounts %>
             <%- if current_person.own_groups.length > 0 %>
-              <li><%= link_to "Invite to group", invite_person_path(@person) %>
+              <li><%= group_invite_link @person %></li>
             <%- end -%>
+            <%= render :partial => 'account', :collection => @person.accounts %>
           <%- end -%>
           <%- if current_person.admin? -%>
-            <li>
-            <%- activity = @person.deactivated? ? "activate" : "deactivate" -%>
-            <%= link_to activity, 
-                        person_path(@person, :task => "deactivated"),
-                        :method => :put %>
-            </li>
+          <li><%= promote_to_accountant_link @person %></li> 
+            <li><%= deactivate_link @person %></li>
           <%- end -%>
  <% else -%>
         <%- end -%>
