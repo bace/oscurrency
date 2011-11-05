@@ -224,6 +224,9 @@ p.welcome {
   padding: 0 0 6px 0;
   width: 100%;
 }
+.list.invite_contacts li {
+  width: 99%;
+}
 .list .profile-image {
   clear: left;
   float: left;

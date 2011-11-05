@@ -1,0 +1,9 @@
+<li class="vcard person" id="p<%= contact.id -%>">
+  <div class="profile-image">
+    <%= image_link contact, :class => "photo", :image => :icon %>
+  </div>
+  <p>
+    <%= check_box('checkbox',contact.id.to_s, :class=>'check', :id => "check_#{contact.id}") %>
+    <%= link_to contact.name, person_path(contact) %>
+  </p>
+</li>

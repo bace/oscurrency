@@ -18,7 +18,6 @@ class GroupsController < ApplicationController
     @offers = @group.offers
     @forum = @group.forum
     @topics = Topic.find_recently_active(@forum, params[:page]) 
-    @contacts = contacts_to_invite
     group_redirect_if_not_public 
   end
 
@@ -75,7 +74,7 @@ class GroupsController < ApplicationController
   
   def invite
     @group = Group.find(params[:id])
-    @contacts = contacts_to_invite
+    @contacts = contacts_to_invite(params[:q])
 
     respond_to do |format|
       if current_person.own_groups.include?(@group)
@@ -171,8 +170,8 @@ class GroupsController < ApplicationController
   
   private
   
-  def contacts_to_invite
-    Person.all - @group.people
+  def contacts_to_invite(query)
+    (query.nil? ? Person.all : Person.search(query)) - @group.people
   end
   
   def group_owner
