@@ -3,7 +3,7 @@
   <h2>Invite people to '<%= @group.name %>'</h2>
 
   <% form_tag invite_group_path(@group), :method => :get do %>
-  <%= text_field_tag :q, params[:q], :maxlength => 40 %>
+  <%= text_field_tag :q, h(params[:q]), :maxlength => 40 %>
   <%= submit_tag "Search people", :name => nil %>
   <%- end -%>
 
