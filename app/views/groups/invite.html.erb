@@ -1,3 +1,4 @@
+<script>max_invitations=<%= @max_invites %>;</script>
 <%- column_div :type => :primary do -%>
   
   <h2>Invite people to '<%= @group.name %>'</h2>
@@ -16,7 +17,7 @@
     </ul>
 
     <div><input type='submit' value='Select all' onclick="$$('#form input.check').each(function(box){box.checked=!box.checked});return false;" class="button" />
-    <%= submit_tag "Invite", :class => "button", :id => "button" %></div>
+      <%= submit_tag "Invite", :class => "button", :id => "button", :onclick => "x=$$('form input[type=checkbox]:checked').size();if(x>max_invitations){alert('You are trying to invite too many people');return false;}" %></div>
   <% end %>
 <%- end -%>
 
