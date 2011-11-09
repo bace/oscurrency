@@ -74,12 +74,13 @@ class PersonMailer < ActionMailer::Base
     "preferences_note" => preferences_note(membership.person)
   end
   
-  def invitation_notification(membership)
+  def invitation_notification(membership, custom_message)
     from         "#{membership.group.name} <invitation#{domain}>"
     recipients   membership.person.email
     subject      formatted_subject("Invitation from group #{membership.group.name}")
     body         "server" => server,
     "membership" => membership,
+    "custom_message" => custom_message,
     "url" => edit_membership_path(membership),
     "preferences_note" => preferences_note(membership.person)
   end

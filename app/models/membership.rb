@@ -62,7 +62,7 @@ class Membership < ActiveRecord::Base
       end
     end
     
-    def invite(person, group, send_mail = nil)
+    def invite(person, group, custom_message='', send_mail = nil)
       if send_mail.nil?
         send_mail = global_prefs.email_notifications? &&
                     group.owner.connection_notifications?
@@ -74,7 +74,7 @@ class Membership < ActiveRecord::Base
           create(:person => person, :group => group, :status => INVITED)
           if send_mail
             membership = person.memberships.find(:first, :conditions => ['group_id = ?',group])
-            PersonMailer.deliver_invitation_notification(membership)
+            PersonMailer.deliver_invitation_notification(membership, custom_message)
           end
         end
         true

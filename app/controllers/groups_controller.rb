@@ -76,7 +76,7 @@ class GroupsController < ApplicationController
     @group = Group.find(params[:id])
     @contacts = contacts_to_invite(params[:q])
 
-    @max_invites = ENV['MAX_INVITATIONS'].to_i || 20
+    @max_invites = ENV['MAX_INVITATIONS'].nil? ? 20 : ENV['MAX_INVITATIONS'].to_i
 
     flash[:notice] = "You may invite up to #{@max_invites} people at a time"
     respond_to do |format|
@@ -96,11 +96,11 @@ class GroupsController < ApplicationController
     @group = Group.find(params[:id])
     invitations = params[:checkbox].collect{|x| x if  x[1]=="1" }.compact
 
-    @max_invites = ENV['MAX_INVITATIONS'].to_i || 20
+    @max_invites = ENV['MAX_INVITATIONS'].nil? ? 20 : ENV['MAX_INVITATIONS'].to_i
     if invitations.length <= @max_invites
       invitations.each do |invitation|
         if Membership.find_all_by_group_id(@group, :conditions => ['person_id = ?',invitation[0].to_i]).empty?
-          Membership.invite(Person.find(invitation[0].to_i),@group)
+          Membership.invite(Person.find(invitation[0].to_i),@group,params[:custom_message])
         end
       end
       flash[:notice] = "You have invited some people to '#{@group.name}'"

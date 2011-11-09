@@ -1,5 +1,7 @@
 You have a new membership invitation from group <%= @membership.group.name %>:
 
+<%= sanitize @custom_message %>
+
 http://<%= @server %><%= @url %>
 
 <%= @preferences_note %>
