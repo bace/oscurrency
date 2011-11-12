@@ -1,5 +1,4 @@
 class GroupsController < ApplicationController
-  helper_method :viewable_group?
   skip_before_filter :require_activation
   before_filter :login_or_oauth_required
   before_filter :group_authorization_required, :only => [:members,:reqs,:offers,:forum]
@@ -192,10 +191,6 @@ class GroupsController < ApplicationController
     end
   end
   
-  def viewable_group?(group)
-    group.public? or Membership.connected?(current_person,group) or current_person.admin?
-  end
-
   private
   
   def contacts_to_invite(query)
