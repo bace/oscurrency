@@ -1,6 +1,7 @@
 <%- column_div :type => :primary do -%>
   <div class="profile vcard">
     <h2>Group: <span class="fn n"><%= h @group.name %></span></h2>
+    <%= render :partial => 'menu' %>
     <%- if group_owner?(current_person,@group) -%>
       <%- if @group.description.blank? -%>
         <div class="error">
@@ -73,39 +74,6 @@
   </div>
   <% if viewable_group?(@group) %>
 
-    <h2>Requests</h2>
-
-    <%- if @reqs.empty? -%>
-        <h3 class="blankslate">No requests (yet!)</h3>
-    <%- else -%>
-      <ul class="list full">
-        <%= render :partial => 'reqs/req', :collection => @reqs, :locals => {:short => true} %>
-      </ul>
-    <%- end -%>
-
-    <h2>Offers</h2>
-
-    <%- if @offers.empty? -%> 
-      <h3 class="blankslate">No offers (yet!)</h3>
-    <%- else -%>
-      <ul class="list full">
-        <%= render :partial => 'offers/offer', :collection => @offers, :locals => {:short => true} %>
-      </ul>
-    <%- end -%>
-
-    <h2>Discussion topics</h2>
-    
-    <ol class="list forum full">
-      <%= render :partial => 'topics/topic', :collection => @topics %>
-    </ol>
-    <h2>Add new topic</h2>
-
-    <% form_for :topic, :url => forum_topics_path(@forum) do |f| %>
-      <div class="form_row">
-        <%= f.text_field :name %>
-        <%= submit_tag "Submit", :class => "button" %>
-      </div>
-    <% end %>
   <%- end -%>
   
 <%- end -%>

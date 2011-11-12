@@ -57,10 +57,6 @@ class Group < ActiveRecord::Base
     Membership.invited?(person,self)
   end
  
-  def is_viewable?(person)
-   self.public? or self.private? or person.admin? or self.has_invited?(person)
-  end
-
   ## Photo helpers
   def photo
     # This should only have one entry, but be paranoid.

@@ -1,0 +1,16 @@
+<%- column_div :type => :primary do -%>
+  <h2>Group: <span class="fn n"><%= h @group.name %></span></h2>
+  <%= render :partial => 'menu' %>
+
+  <%- if @reqs.empty? -%>
+      <h3 class="blankslate">No requests (yet!)</h3>
+  <%- else -%>
+    <ul class="list full">
+      <%= render :partial => 'reqs/req', :collection => @reqs, :locals => {:short => true} %>
+    </ul>
+  <%- end -%>
+<%- end -%>
+
+<%- column_div :type => :secondary do -%>
+  <%= render :partial => 'shared/group_membership', :locals => {:group => @group} %>
+<%- end -%>

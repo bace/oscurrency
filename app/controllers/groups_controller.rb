@@ -1,9 +1,24 @@
 class GroupsController < ApplicationController
+  helper_method :viewable_group?
   skip_before_filter :require_activation
   before_filter :login_or_oauth_required
+  before_filter :group_authorization_required, :only => [:members,:reqs,:offers,:forum]
   before_filter :group_owner, :only => [:edit, :update, :destroy, 
     :new_photo, :save_photo, :delete_photo]
-  
+
+  def reqs
+    @reqs = @group.reqs
+  end
+
+  def offers
+    @offers = @group.offers
+  end
+
+  def forum
+    @forum = @group.forum
+    @topics = Topic.find_recently_active(@forum, params[:page]) 
+  end
+
   def index
     @groups = Group.paginated(params[:page])
 
@@ -14,11 +29,10 @@ class GroupsController < ApplicationController
 
   def show
     @group = Group.find(params[:id])
-    @reqs = @group.reqs
-    @offers = @group.offers
-    @forum = @group.forum
-    @topics = Topic.find_recently_active(@forum, params[:page]) 
-    group_redirect_if_not_public 
+    respond_to do |format|
+      format.html
+      format.xml { render :xml => @group.to_xml(:methods => [:icon,:thumbnail], :only => [:id,:name,:description,:mode,:person_id,:created_at,:updated_at,:unit,:icon,:thumbnail]) }
+    end
   end
 
   def new
@@ -113,12 +127,13 @@ class GroupsController < ApplicationController
   end
   
   def members
-    @group = Group.find(params[:id])
     @members = @group.people.paginate(:page => params[:page],
                                           :per_page => RASTER_PER_PAGE)
     @pending = @group.pending_request.paginate(:page => params[:page],
                                           :per_page => RASTER_PER_PAGE)
-    group_redirect_if_not_public
+    respond_to do |format|
+      format.html
+    end
   end
   
   def photos
@@ -177,26 +192,23 @@ class GroupsController < ApplicationController
     end
   end
   
+  def viewable_group?(group)
+    group.public? or Membership.connected?(current_person,group) or current_person.admin?
+  end
+
   private
   
   def contacts_to_invite(query)
     (query.nil? ? Person.all : Person.search(query)) - @group.people
   end
-  
+ 
   def group_owner
     redirect_to home_url unless current_person == Group.find(params[:id]).owner
   end
-  
-  def group_redirect_if_not_public
-    respond_to do |format|
-      if @group.is_viewable?(current_person)
-        format.html
-        format.xml { render :xml => @group.to_xml(:methods => [:icon,:thumbnail], :only => [:id,:name,:description,:mode,:person_id,:created_at,:updated_at,:unit,:icon,:thumbnail]) }
-      else
-        format.html { redirect_to(groups_path) }
-        format.xml { render :nothing => true, :status => :unauthorized }
-      end
-    end
+
+  def group_authorization_required
+    @group = Group.find(params[:id])
+    redirect_to home_url unless viewable_group?(@group)
   end
   
 end
