@@ -1,7 +1,9 @@
 <%- column_div :type => :primary do -%>
   <div class="profile vcard">
     <h2>Group: <span class="fn n"><%= h @group.name %></span></h2>
-    <%= render :partial => 'menu' %>
+    <% if viewable_group?(@group) %>
+      <%= render :partial => 'menu' %>
+    <%- end -%>
     <%- if group_owner?(current_person,@group) -%>
       <%- if @group.description.blank? -%>
         <div class="error">
