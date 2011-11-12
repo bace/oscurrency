@@ -6,11 +6,11 @@ class GroupsController < ApplicationController
     :new_photo, :save_photo, :delete_photo]
 
   def reqs
-    @reqs = @group.reqs
+    @reqs = @group.reqs.paginate(:page => params[:page])
   end
 
   def offers
-    @offers = @group.offers
+    @offers = @group.offers.paginate(:page => params[:page])
   end
 
   def forum

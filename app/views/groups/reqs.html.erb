@@ -5,9 +5,11 @@
   <%- if @reqs.empty? -%>
       <h3 class="blankslate">No requests (yet!)</h3>
   <%- else -%>
+    <%= will_paginate(@reqs) %>
     <ul class="list full">
       <%= render :partial => 'reqs/req', :collection => @reqs, :locals => {:short => true} %>
     </ul>
+    <%= will_paginate(@reqs) %>
   <%- end -%>
 <%- end -%>
 

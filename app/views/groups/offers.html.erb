@@ -6,9 +6,11 @@
     <%- if @offers.empty? -%> 
       <h3 class="blankslate">No offers (yet!)</h3>
     <%- else -%>
+      <%= will_paginate(@offers) %>
       <ul class="list full">
         <%= render :partial => 'offers/offer', :collection => @offers, :locals => {:short => true} %>
       </ul>
+      <%= will_paginate(@offers) %>
     <%- end -%>
 <%- end -%>
 
