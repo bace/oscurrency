@@ -154,6 +154,15 @@ module ApplicationHelper
     str << link_to_unless_current(action, path, opts)
   end
 
+  def transacts_link(person)
+    path = transacts_path
+    account = person.accounts.first(:conditions => 'group_id IS NULL')
+    action = "Main Account: #{account.balance} hours&nbsp;(#{account.total_paid} given, #{account.total_earned} received)"
+    img = image_tag("icons/print.gif")
+    opts = {:target => '_blank'}
+    str = construct_link(img,action,path,opts)
+  end
+
   def account_link(account, options = {})
     path = person_account_path(account.person,account) # XXX link to transactions
     img = image_tag("icons/bargraph.gif")

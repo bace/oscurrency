@@ -1,5 +1,7 @@
-<h2>My Accounts</h2>
-<%= render :partial => '/people/account', :collection => @person.accounts %>
+<h2>My Account</h2>
+  <ul class="list full">
+    <li><%= transacts_link(current_person) %></li>
+  </ul>
     <h2>My Active Work</h2>
 <%- if @person.current_and_active_bids.length < 1 -%>
     <h3 class="blankslate">No active bids</h3>
