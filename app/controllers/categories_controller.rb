@@ -20,7 +20,7 @@ class CategoriesController < ApplicationController
   def show
     @category = Category.find(params[:id])
     @people = @category.active_people
-    @reqs = @category.current_and_active_reqs
+    @reqs = Req.current_and_active(@category.id)
     @offers = @category.offers
 
     respond_to do |format|

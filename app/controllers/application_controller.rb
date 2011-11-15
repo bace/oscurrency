@@ -3,6 +3,7 @@
 
 class ApplicationController < ActionController::Base
   helper :all # include all helpers, all the time
+  helper_method :viewable_group?
   include AuthenticatedSystem
   include SharedHelper
   include PreferencesHelper
@@ -25,6 +26,10 @@ class ApplicationController < ActionController::Base
   protect_from_forgery # :secret => '71a8c82e6d248750397d166001c5e308'
 
   protected
+    def viewable_group?(group)
+      group.public? or Membership.connected?(current_person,group) or current_person.admin?
+    end
+
     def current_user
       current_person 
     end

@@ -27,6 +27,7 @@ class Req < ActiveRecord::Base
   
   has_and_belongs_to_many :categories
   belongs_to :person
+  belongs_to :group
   has_many :bids, :order => 'created_at DESC', :dependent => :destroy
   has_many :exchanges, :as => :metadata
 
@@ -45,17 +46,27 @@ class Req < ActiveRecord::Base
 
   class << self
 
+    def conditions_for_public_view
+      ["(groups.mode = ? OR group_id IS NULL) AND active = ? AND due_date >= ?", 0, true, DateTime.now]
+    end
 
-    def current_and_active(page=1, category_id=nil)
-      today = DateTime.now
+    def current_and_active_paginated(page=1, category_id=nil)
       if category_id
-        @reqs = Category.find(category_id).reqs.paginate(:all, :page => page, :conditions => ["active = ? AND due_date >= ?", true, today], :order => 'created_at DESC')
+        @reqs = Category.find(category_id).reqs.paginate(:all, :page => page, :include => :group, :conditions => conditions_for_public_view, :order => 'reqs.created_at DESC')
       else
-        @reqs = Req.paginate(:all, :page => page, :conditions => ["reqs.active = ? AND due_date >= ?", true, today], :order => 'created_at DESC')
-end
+        @reqs = Req.paginate(:all, :page => page, :include => :group, :conditions => conditions_for_public_view, :order => 'reqs.created_at DESC')
+      end
       @reqs.delete_if { |req| req.has_approved? }
     end
 
+    def current_and_active(category_id=nil)
+      if category_id
+        @reqs = Category.find(category_id).reqs.all(:include => :group, :conditions => conditions_for_public_view, :order => 'reqs.created_at DESC')
+      else
+        @reqs = Req.all(:include => :group, :conditions => conditions_for_public_view, :order => 'reqs.created_at DESC')
+      end
+      @reqs.delete_if { |req| req.has_approved? }
+    end
   end
 
   def formatted_categories
@@ -64,25 +75,6 @@ end
 
   def listed_categories
     categories.collect{|cat| ERB::Util.html_escape(cat.long_name)}.join(",").briefiate(100)
-  end
-
-
-  def tweet(url)
-    if !twitter?
-      logger.info "No twitter requested for [#{id}:#{name}]"
-      return
-    end
-
-    twitter_name = Req.global_prefs.twitter_name
-    twitter_password = Req.global_prefs.plaintext_twitter_password
-    twitter_api = Req.global_prefs.twitter_api
-
-    twit = Twitter::Base.new(twitter_name,twitter_password, :api_host => twitter_api )
-    begin
-      twit.update("#{name}: #{url}")
-    rescue Twitter::CantConnect => e
-      logger.info "ERROR Twitter::CantConnect for [#{id}:#{name}] (" + e.to_s + ")"
-    end
   end
 
   def has_accepted_bid?
@@ -117,6 +109,10 @@ end
 
   def perform
     actually_notify_workers
+  end
+
+  def viewable?(person)
+    group.nil? || group.public? || Membership.exists?(person,group)
   end
 
   private

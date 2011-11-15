@@ -32,8 +32,7 @@ class ExchangesController < ApplicationController
       @req.name = 'Enter description of service here'
     end
 
-    @groups = Person.find(params[:person_id]).groups
-    @groups.delete_if {|g| !g.adhoc_currency?}
+    @groups = current_person.groups
   end
 
   # this method expects that the form is either referencing an existing offer or accepting a name field for a new req to be created 
@@ -41,7 +40,9 @@ class ExchangesController < ApplicationController
   def create
     @exchange = Exchange.new(params[:exchange]) # amount and group_id are the only accessible fields
     @exchange.worker = @worker
-    @exchange.customer = current_person
+    unless (current_person.accountant? or current_person.admin?) and @exchange.customer
+      @exchange.customer = current_person
+    end
 
     if params[:offer]
       @offer = Offer.find(params[:offer][:id])

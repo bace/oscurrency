@@ -232,6 +232,9 @@ p.welcome {
   padding: 0 0 6px 0;
   width: 100%;
 }
+.list.invite_contacts li {
+  width: 99%;
+}
 .list .profile-image {
   clear: left;
   float: left;
@@ -600,6 +603,41 @@ span.name
 li.req .profile-image .name
 {
     font-size:12px;
+}
+
+#menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+#menu li {
+  margin: 0;
+  padding: 0;
+  float: left;
+}
+
+#menu li a {
+  display: block;
+  padding: 4px 8px;
+  text-decoration: none;
+  border: solid black 1px;
+  color: black;
+  background-color: #AEBBE2;
+}
+
+#menu li a.selected_tab {
+  background-color: #AAAAAA;
+}
+
+#menu li a:hover {
+  color: white;
+  background-color: #4A63B8;
+}
+
+.clear {
+  clear: both;
+  padding: 10px;
 }
 
 .welcome{  

@@ -1,9 +1,11 @@
 class OffersController < ApplicationController
-  before_filter :login_required, :except => [:index, :show]
+  prepend_before_filter :login_required, :except => [:index, :show]
+  prepend_before_filter :login_required, :only => [:show], :if => :private_group_offer?
+  before_filter :group_membership_required, :only => [:show], :if => :private_group_offer?
   before_filter :correct_person_required, :only => [:edit, :update, :destroy]
 
   def index
-    @offers = Offer.current(params[:page], params[:category_id])
+    @offers = Offer.current_paginated(params[:page], params[:category_id])
 
     respond_to do |format|
       format.html # index.html.erb
@@ -12,8 +14,6 @@ class OffersController < ApplicationController
   end
 
   def show
-    @offer = Offer.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @offer }
@@ -23,6 +23,7 @@ class OffersController < ApplicationController
   def new
     @offer = Offer.new
     @all_categories = Category.all
+    @groups = current_person.groups
   end
 
   def create
@@ -79,7 +80,16 @@ class OffersController < ApplicationController
     end
   end
 
+  def private_group_offer?
+    @offer = Offer.find(params[:id])
+    @offer.group && @offer.group.private?
+  end
+
 private
+  def group_membership_required
+    #login_required
+    redirect_to home_url unless @offer.viewable?(current_person)
+  end
 
   def correct_person_required
     redirect_to home_url unless ( current_person.admin? or Offer.find(params[:id]).person == current_person )

@@ -1,0 +1,9 @@
+<div>
+  <ul id="menu">
+    <li><%= link_to_unless_current("Home", group_path(@group)) { link_to("Home", group_path(@group), :class => 'selected_tab') } %></li>
+    <li><%= link_to_unless_current("Requests", reqs_group_path(@group)) { link_to("Requests", reqs_group_path(@group), :class => 'selected_tab') } %></li>
+    <li><%= link_to_unless_current("Offers", offers_group_path(@group)) { link_to("Offers", offers_group_path(@group), :class => 'selected_tab') } %></li>
+    <li><%= link_to_unless_current("Forum", forum_group_path(@group)) { link_to("Forum", forum_group_path(@group), :class => 'selected_tab') } %></li>
+  </ul>
+</div>
+<div class="clear"></div>

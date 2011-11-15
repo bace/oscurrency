@@ -1,0 +1,19 @@
+<%- column_div :type => :primary do -%>
+  <h2>Group: <span class="fn n"><%= h @group.name %></span></h2>
+  <%= render :partial => 'menu' %>
+    <h2>Offers</h2>
+
+    <%- if @offers.empty? -%> 
+      <h3 class="blankslate">No offers (yet!)</h3>
+    <%- else -%>
+      <%= will_paginate(@offers) %>
+      <ul class="list full">
+        <%= render :partial => 'offers/offer', :collection => @offers, :locals => {:short => true} %>
+      </ul>
+      <%= will_paginate(@offers) %>
+    <%- end -%>
+<%- end -%>
+
+<%- column_div :type => :secondary do -%>
+  <%= render :partial => 'shared/group_membership', :locals => {:group => @group} %>
+<%- end -%>

@@ -20,7 +20,7 @@
 #
 
 class Bid < ActiveRecord::Base
-  before_validation_on_create :setup_estimated_hours
+  before_validation_on_create :setup_group_and_expiration
   after_validation_on_create :trigger_offered
 
   include ActionController::UrlWriter
@@ -28,11 +28,13 @@ class Bid < ActiveRecord::Base
 
   belongs_to :req
   belongs_to :person
+  belongs_to :group
   validates_presence_of :estimated_hours, :person_id
   attr_readonly :estimated_hours
 
   attr_protected :person_id, :created_at, :updated_at
   attr_protected :status_id, :state
+  attr_protected :group_id
 
   aasm_column :state
 
@@ -88,7 +90,8 @@ class Bid < ActiveRecord::Base
     end
   end
 
-  def setup_estimated_hours
+  def setup_group_and_expiration
+    self.group = self.req.group
     if self.expiration_date.blank?
       self.expiration_date = 7.days.from_now
     else

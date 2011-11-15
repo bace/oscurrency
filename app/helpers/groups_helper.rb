@@ -3,7 +3,7 @@ module GroupsHelper
   def group_owner?(person,group)
     person == group.owner
   end
-  
+
   # Return a group's image link.
   # The default is to display the group's icon linked to the profile.
   def image_link(group, options = {})
@@ -36,7 +36,6 @@ module GroupsHelper
     modes = []
     modes << ["Public",0]
     modes << ["Private",1]
-    modes << ["Hidden", 2]
     return modes
   end
   

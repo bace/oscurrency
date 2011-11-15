@@ -9,6 +9,9 @@ ActionController::Routing::Routes.draw do |map|
     :member => { :join => :post, 
                  :leave => :post, 
                  :members => :get, 
+                 :reqs => :get,
+                 :offers => :get,
+                 :forum => :get,
                  :invite => :get,
                  :invite_them => :post,
                  :photos => :get,
@@ -19,9 +22,6 @@ ActionController::Routing::Routes.draw do |map|
   end
 
   map.resources :bids
-
-  map.twitter_oauth_client '/reqs/twitter_oauth_client', :controller => "reqs", :action => "twitter_oauth_client"
-  map.twitter_oauth_callback '/reqs/twitter_oauth_callback', :controller => "reqs", :action => "twitter_oauth_callback"
 
   map.resources :reqs do |req|
     req.resources :bids
@@ -52,6 +52,8 @@ ActionController::Routing::Routes.draw do |map|
                            :member => { :reply => :get, :undestroy => :put }
 
   map.resources :people, :member => { :verify_email => :get,
+                                      :invite => :get,
+                                      :send_invite => :post,
                                       :common_contacts => :get }
 
 
@@ -75,6 +77,7 @@ ActionController::Routing::Routes.draw do |map|
   end
   map.namespace :admin do |admin|
     admin.resources :people, :active_scaffold => true
+    admin.resources :exchanges, :active_scaffold => true
     admin.resources :preferences, :broadcast_emails, :feed_posts
     admin.resources :groups
     admin.resources :forums do |forums|

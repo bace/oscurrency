@@ -44,13 +44,6 @@ class Category < ActiveRecord::Base
     active_people = self.people.find(:all, :conditions => Person.conditions_for_mostly_active)
   end
 
-  def current_and_active_reqs
-    today = DateTime.now
-    reqs = self.reqs.find(:all, :conditions => ["active = ? AND due_date >= ?", true, today], :order => 'created_at DESC')
-    reqs.delete_if { |req| req.has_approved? }
-  end
-
-
   def self.all_sorted
     Category.find(:all, :order => "name").sort_by { |a| a.name }
   end
