@@ -66,6 +66,7 @@ class ReqsController < ApplicationController
         format.xml  { render :xml => @req, :status => :created, :location => @req }
       else
         @all_categories = Category.all
+        @groups = current_person.groups
         format.html { render :action => "new" }
         format.xml  { render :xml => @req.errors, :status => :unprocessable_entity }
       end
