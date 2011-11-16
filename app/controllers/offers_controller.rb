@@ -39,6 +39,7 @@ class OffersController < ApplicationController
         format.xml  { render :xml => @offer, :status => :created, :location => @offer }
       else
         @all_categories = Category.all
+        @groups = current_person.groups
         format.html { render :action => "new" }
         format.xml  { render :xml => @offer.errors, :status => :unprocessable_entity }
       end
