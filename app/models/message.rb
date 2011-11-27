@@ -33,7 +33,7 @@ class Message < Communication
     content
   end
 
-  MAX_CONTENT_LENGTH = 5000
+  MAX_CONTENT_LENGTH = 20000
   SEARCH_LIMIT = 20
   SEARCH_PER_PAGE = 8
 
