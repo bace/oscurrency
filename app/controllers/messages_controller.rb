@@ -6,7 +6,7 @@ class MessagesController < ApplicationController
 
   # GET /messages
   def index
-    @messages = current_person.received_messages(params[:page]).delete_if {|m| m.type == TempMessage}
+    @messages = current_person.received_messages(params[:page]).delete_if {|m| m.class == TempMessage}
     respond_to do |format|
       format.html { render :template => "messages/index" }
     end
