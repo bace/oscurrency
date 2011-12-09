@@ -1,6 +1,5 @@
 class OffersController < ApplicationController
-  prepend_before_filter :login_required, :except => [:index, :show]
-  prepend_before_filter :login_required, :only => [:show], :if => :private_group_offer?
+  prepend_before_filter :login_required, :except => [:index]
   before_filter :group_membership_required, :only => [:show], :if => :private_group_offer?
   before_filter :correct_person_required, :only => [:edit, :update, :destroy]
 

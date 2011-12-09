@@ -1,6 +1,5 @@
 class ReqsController < ApplicationController
-  prepend_before_filter :login_required, :except =>[:index,:show]
-  prepend_before_filter :login_required, :only => [:show], :if => :private_group_req?
+  prepend_before_filter :login_required, :except =>[:index]
   before_filter :group_membership_required, :only => [:show], :if => :private_group_req?
   before_filter :correct_person_and_no_accept_required, :only => [ :edit, :update ]
   before_filter :correct_person_and_no_commitment_required, :only => [ :destroy ]
