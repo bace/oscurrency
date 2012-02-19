@@ -29,7 +29,7 @@ module Cheepnis
 
       # enqueue the object in the normal way
       Delayed::Job.enqueue(object)
-      if on_heroku && CHEEPNIS_MODE != "OFF"
+      if on_heroku && ENV["CHEEPNIS_MODE"] != "OFF"
         # start a worker if necessary
         start
         # and enqueue something that calls maybe_stop, at low priortity
