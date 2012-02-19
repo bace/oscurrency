@@ -6,15 +6,20 @@ module Cheepnis
   # usage: set environment variables HEROKU_USER and HEROKU_PASSWORD
   # Call Cheepnis.enqueue(obj) in place of Delayed::Job.enqueue(obj)
   # A cron job that calls Cheepnis.maybe_stop is a good idea; will terminate workers if the usual method fails .
-
-  # the environment variable CHEEPNIS_NO_DELAY can be set to force jobs to execute directly.
-  # the environment variable CHEEPNIS_INDIRECT can be set to use a connector object which prevents overly aggressive object serialization
-
   # (hm, should have called this DownSizer, since it kills off workers)
 
+  # Relevant environment variables:
+
+  # CHEEPNIS_MODE: 
+  #   ON (default) -- like Delayed::Job, but will try to turn workers on and off to meet demand
+  #   OFF -- acts as normal Delayed::Job (no manipulation of workers)
+  #   IMMEDIATE -- tasks are performed immediately rather than being queued
+
+  # CHEEPNIS_INDIRECT
+  #   if set, use a connector object which prevents overly aggressive object serialization
 
   def self.enqueue(object)
-    if ENV["CHEEPNIS_NO_DELAY"] != nil
+    if ENV["CHEEPNIS_MODE"] == "IMMEDIATE"
       object.perform
     else
 
@@ -24,7 +29,7 @@ module Cheepnis
 
       # enqueue the object in the normal way
       Delayed::Job.enqueue(object)
-      if on_heroku
+      if on_heroku && CHEEPNIS_MODE != "OFF"
         # start a worker if necessary
         start
         # and enqueue something that calls maybe_stop, at low priortity
