@@ -80,26 +80,8 @@ class ExchangesController < ApplicationController
 
   def destroy
     @exchange = Exchange.find(params[:id])
-    @metadata = @exchange.metadata
-
-    begin
-      Exchange.transaction do
-        @worker.account.withdraw(@exchange.amount)
-        current_person.account.deposit(@exchange.amount)
-      end
-    rescue
-      respond_to do |format|
-        flash[:error] = "Error with suspension of payment."
-        format.html { redirect_to person_path(@worker) and return }
-      end
-    end
 
     @exchange.destroy
-    if @metadata.class == Req
-      unless @metadata.active?
-        @metadata.destroy
-      end
-    end
     flash[:success] = "Payment suspended."
 
     respond_to do |format|

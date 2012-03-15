@@ -29,7 +29,7 @@ class Exchange < ActiveRecord::Base
   after_create :decrement_offer_available_count
   before_create :calculate_account_balances
   after_create :send_payment_notification_to_worker
-  before_destroy :send_suspend_payment_notification_to_worker
+  before_destroy :delete_calculate_account_balances
 
   def log_activity
     add_activities(:item => self, :person => self.worker)
@@ -88,6 +88,26 @@ class Exchange < ActiveRecord::Base
         end
       end
     end
+  end
+
+  def delete_calculate_account_balances
+    begin
+      Account.transaction do
+        if group.nil?
+          worker.account.withdraw(amount)
+          customer.account.deposit(amount)
+        else
+          worker.accounts.first(:conditions => ["group_id IS ?", group.id]).withdraw(amount)
+          customer.accounts.first(:conditions => ["group_id IS ?", group.id]).deposit(amount)
+        end
+        if self.metadata.class == Req
+          unless self.metadata.active?
+            self.metadata.destroy
+          end
+        end
+      end
+    end
+    send_suspend_payment_notification_to_worker
   end
 
   def send_payment_notification_to_worker
