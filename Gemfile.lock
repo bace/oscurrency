@@ -26,10 +26,11 @@ GEM
       hpricot (>= 0.6)
       simple-rss (>= 1.1)
     hashie (0.1.8)
-    heroku (2.0.4)
+    heroku (2.21.3)
       launchy (>= 0.3.2)
-      rest-client (>= 1.4.0, < 1.7.0)
-      term-ansicolor (~> 1.0.5)
+      netrc (~> 0.7.1)
+      rest-client (~> 1.6.1)
+      rubyzip
     hpricot (0.8.4)
     httparty (0.4.5)
       crack (>= 0.1.1)
@@ -39,6 +40,7 @@ GEM
       rake (>= 0.8.1)
     memcache-client (1.7.4)
     mime-types (1.16)
+    netrc (0.7.1)
     oauth (0.3.6)
       ruby-hmac (>= 0.3.1)
     pg (0.11.0)
@@ -59,11 +61,11 @@ GEM
     rmagick (2.13.1)
     ruby-hmac (0.4.0)
     ruby-openid (2.1.8)
+    rubyzip (0.9.6.1)
     simple-rss (1.2.3)
     starling-starling (0.10.0)
       eventmachine (>= 0.12.0)
       memcache-client (>= 1.7.0)
-    term-ansicolor (1.0.5)
     texticle (1.0.4.20101004123327)
     twitter (0.8.4)
       hashie (~> 0.1.3)
@@ -80,7 +82,7 @@ DEPENDENCIES
   chronic
   eventmachine
   feed-normalizer
-  heroku
+  heroku (>= 2.2.0)
   json
   memcache-client (= 1.7.4)
   oauth (= 0.3.6)

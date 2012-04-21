@@ -2,7 +2,8 @@ class SearchesController < ApplicationController
   include ApplicationHelper
 
   # see app/helpers/searches_helper.rb
-  SEARCHABLE_CLASSES = [Person, Req, Offer, Message, ForumPost, Category, Group]
+  #SEARCHABLE_CLASSES = [Person, Req, Offer, Message, ForumPost, Category, Group]
+  SEARCHABLE_CLASSES = [Person, Req, Offer, ForumPost, Category, Group]
 
   before_filter :login_required
 

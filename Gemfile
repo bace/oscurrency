@@ -12,7 +12,7 @@ gem "eventmachine"
 gem "aws-s3"
 gem "rmagick"  # causing trouble, beware
 gem "rack-openid"
-gem "heroku"
+gem "heroku", '>= 2.2.0'
 gem "json"
 gem "aasm"
 
