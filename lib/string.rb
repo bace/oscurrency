@@ -12,6 +12,10 @@ class String
     return s
   end
 
+  def normalize_phone!
+    self.gsub!(/\D/, "")
+  end
+
   def remove_html
     tokenizer = HTML::Tokenizer.new(self)
     result = ""
