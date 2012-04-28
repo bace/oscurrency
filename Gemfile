@@ -15,6 +15,7 @@ gem "rack-openid"
 gem "heroku", '>= 2.2.0'
 gem "json"
 gem "aasm"
+gem "twilio"
 
 source "http://gems.github.com"
 #gem "rubyist-aasm", :require => "aasm"
