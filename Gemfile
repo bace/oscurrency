@@ -6,7 +6,7 @@ gem "oauth", '= 0.3.6'
 gem "chronic"
 gem "twitter", '= 0.8.4'
 gem "feed-normalizer"
-gem "texticle"
+gem "texticle", '>= 1.6.2'
 gem "memcache-client", '= 1.7.4'
 gem "eventmachine"
 gem "aws-s3"
