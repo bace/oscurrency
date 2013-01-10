@@ -1,10 +1,9 @@
 source :gemcutter	
-gem "rails", '= 2.3.11'
+gem "rails", '= 2.3.15'
 #gem "rack", '= 1.2.2'   #Heroku seems to force this
 gem "pg"		
 gem "oauth", '= 0.3.6'
 gem "chronic"
-gem "twitter", '= 0.8.4'
 gem "feed-normalizer"
 #gem "texticle", '>= 1.6.2'
 gem "texticle"
