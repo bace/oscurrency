@@ -69,8 +69,8 @@
     <% end -%>
 
 
-    <% if admin? || current_person?(req.person)   -%>
-    | <%= link_to "Delete", req, :confirm => 'Are you sure?', :method => :delete #unless (req.has_commitment? || req.has_approved?) 
+    <% if req.active? && ( admin? || current_person?(req.person) ) -%>
+    | <%= link_to "Delete", req, :confirm => 'Are you sure?', :method => :delete unless (req.has_commitment? || req.has_approved? )
     %>
     <% end -%>
 
