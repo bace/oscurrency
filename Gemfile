@@ -1,4 +1,7 @@
-source :gemcutter	
+# source :gemcutter	
+source 'http://rubygems.org'
+ruby "1.8.7"
+# ruby "1.9.3"
 gem "rails", '= 2.3.11'
 #gem "rack", '= 1.2.2'   #Heroku seems to force this
 gem "pg"		
