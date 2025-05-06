@@ -1,4 +1,3 @@
-begin
 Rails.configuration.to_prepare do
 CarrierWave.configure do |config|
   config.fog_credentials = {
@@ -10,11 +9,15 @@ CarrierWave.configure do |config|
    # config.fog_host       = "http://#{ENV['BUCKET']}.s3.amazonaws.com"            # optional, defaults to nil
    # config.fog_host       = "http://"           # optional, defaults to nil
    # config.fog_public     = false                                   # optional, defaults to true
-   config.fog_public = Preference.first.public_uploads unless Rails.env.test?
+   unless Rails.env.test?
+     begin
+       if ActiveRecord::Base.connection.data_source_exists?('preferences')
+         config.fog_public = Preference.first&.public_uploads
+       end
+     rescue ActiveRecord::NoDatabaseError, PG::ConnectionBad => e
+       Rails.logger.info "Skipping carrierwave initializer database query: #{e.message}"
+     end
+   end
    # config.fog_attributes = {'Cache-Control'=>'max-age=315576000'}  # optional, defaults to {}
 end
-end
-rescue
-  # Rescue from the error raised upon first migrating
-  nil
 end
