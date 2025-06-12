@@ -1,4 +1,4 @@
-class CreatePageView < ActiveRecord::Migration
+class CreatePageView < ActiveRecord::Migration[4.2]
   def self.up
     create_table :page_views do |t|
       t.integer :user_id

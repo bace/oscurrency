@@ -1,4 +1,4 @@
-class CreateStatuses < ActiveRecord::Migration
+class CreateStatuses < ActiveRecord::Migration[4.2]
   def self.up
     transaction do
       create_table :statuses do |t|

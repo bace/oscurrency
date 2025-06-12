@@ -1,4 +1,4 @@
-class AddEmailNotificationPreferences < ActiveRecord::Migration
+class AddEmailNotificationPreferences < ActiveRecord::Migration[4.2]
   def self.up
     add_column :people, :connection_notifications, :boolean, :default => true
     add_column :people, :message_notifications, :boolean, :default => true

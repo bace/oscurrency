@@ -1,4 +1,4 @@
-class RenameActiveToBiddable < ActiveRecord::Migration
+class RenameActiveToBiddable < ActiveRecord::Migration[4.2]
   def self.up
     rename_column :reqs, :active, :biddable
   end

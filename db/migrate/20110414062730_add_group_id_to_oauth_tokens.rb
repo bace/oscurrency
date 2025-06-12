@@ -1,4 +1,4 @@
-class AddGroupIdToOauthTokens < ActiveRecord::Migration
+class AddGroupIdToOauthTokens < ActiveRecord::Migration[4.2]
   def self.up
     add_column :oauth_tokens, :group_id, :integer
   end

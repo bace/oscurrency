@@ -1,4 +1,4 @@
-class AddGroupOffers < ActiveRecord::Migration
+class AddGroupOffers < ActiveRecord::Migration[4.2]
   def self.up
     add_column :offers, :group_id, :integer
   end

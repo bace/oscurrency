@@ -1,4 +1,4 @@
-class CreateBroadcastEmails < ActiveRecord::Migration
+class CreateBroadcastEmails < ActiveRecord::Migration[4.2]
   def self.up
     create_table :broadcast_emails do |t|
       t.string :subject

@@ -1,4 +1,4 @@
-class CreateCategoriesReqs < ActiveRecord::Migration
+class CreateCategoriesReqs < ActiveRecord::Migration[4.2]
   def self.up
     create_table :categories_reqs, :id => false do |t|
       t.column :category_id, :integer, :null => false

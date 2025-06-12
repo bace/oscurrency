@@ -1,5 +1,4 @@
-class AddEmailVerified < ActiveRecord::Migration
-  
+class AddEmailVerified < ActiveRecord::Migration[4.2]
   class Person < ActiveRecord::Base    
   end
   

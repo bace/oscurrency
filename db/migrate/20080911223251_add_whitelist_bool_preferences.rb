@@ -1,4 +1,4 @@
-class AddWhitelistBoolPreferences < ActiveRecord::Migration
+class AddWhitelistBoolPreferences < ActiveRecord::Migration[4.2]
   def self.up
     add_column :preferences, :whitelist, :boolean, :default => false
   end

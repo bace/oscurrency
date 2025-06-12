@@ -1,4 +1,4 @@
-class CreatePreferences < ActiveRecord::Migration
+class CreatePreferences < ActiveRecord::Migration[4.2]
   def self.up
     # drop_table :preferences rescue nil
     create_table :preferences do |t|

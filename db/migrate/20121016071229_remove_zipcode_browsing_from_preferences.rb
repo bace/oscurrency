@@ -1,4 +1,4 @@
-class RemoveZipcodeBrowsingFromPreferences < ActiveRecord::Migration
+class RemoveZipcodeBrowsingFromPreferences < ActiveRecord::Migration[4.2]
   def up
     remove_column :preferences, :zipcode_browsing
   end

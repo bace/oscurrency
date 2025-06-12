@@ -1,4 +1,4 @@
-class CreateReqs < ActiveRecord::Migration
+class CreateReqs < ActiveRecord::Migration[4.2]
   def self.up
     create_table :reqs do |t|
       t.string :name

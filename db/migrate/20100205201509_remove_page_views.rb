@@ -1,4 +1,4 @@
-class RemovePageViews < ActiveRecord::Migration
+class RemovePageViews < ActiveRecord::Migration[4.2]
   def self.up
     drop_table :page_views
   end

@@ -1,4 +1,4 @@
-class RemoveBlogsEventsAndWalls < ActiveRecord::Migration
+class RemoveBlogsEventsAndWalls < ActiveRecord::Migration[4.2]
   def up
     drop_table "blogs"
     drop_table "comments"

@@ -1,4 +1,4 @@
-class RemoveSmtpSettingsFromPreferences < ActiveRecord::Migration
+class RemoveSmtpSettingsFromPreferences < ActiveRecord::Migration[4.2]
   def up
     remove_column :preferences, :domain
     remove_column :preferences, :smtp_server

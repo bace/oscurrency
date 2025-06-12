@@ -1,4 +1,4 @@
-class RemoveTwitterPreferences < ActiveRecord::Migration
+class RemoveTwitterPreferences < ActiveRecord::Migration[4.2]
   def self.up
     remove_column :preferences, :twitter_oauth_consumer_key
     remove_column :preferences, :crypted_twitter_oauth_consumer_secret

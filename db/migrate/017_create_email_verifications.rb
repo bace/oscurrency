@@ -1,4 +1,4 @@
-class CreateEmailVerifications < ActiveRecord::Migration
+class CreateEmailVerifications < ActiveRecord::Migration[4.2]
   def self.up
     create_table :email_verifications do |t|
       t.integer :person_id

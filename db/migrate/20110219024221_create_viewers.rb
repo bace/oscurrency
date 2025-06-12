@@ -1,4 +1,4 @@
-class CreateViewers < ActiveRecord::Migration
+class CreateViewers < ActiveRecord::Migration[4.2]
   def self.up
     create_table :viewers do |t|
       t.integer :topic_id

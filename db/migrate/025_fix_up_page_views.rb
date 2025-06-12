@@ -1,4 +1,4 @@
-class FixUpPageViews < ActiveRecord::Migration
+class FixUpPageViews < ActiveRecord::Migration[4.2]
   def self.up
     remove_column :page_views, :user_id
     add_column    :page_views, :person_id, :integer

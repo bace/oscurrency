@@ -1,4 +1,4 @@
-class AddSentToBroadcastEmails < ActiveRecord::Migration
+class AddSentToBroadcastEmails < ActiveRecord::Migration[4.2]
   def self.up
     add_column :broadcast_emails, :sent, :boolean, :default => false, :null => false
   end

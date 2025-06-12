@@ -1,4 +1,4 @@
-class AddRegistrationIntroToPreferences < ActiveRecord::Migration
+class AddRegistrationIntroToPreferences < ActiveRecord::Migration[4.2]
   def self.up
     add_column :preferences, :registration_intro, :text
   end

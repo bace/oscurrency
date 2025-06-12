@@ -1,4 +1,4 @@
-class DoNothingButCreateNewSchemaVersion < ActiveRecord::Migration
+class DoNothingButCreateNewSchemaVersion < ActiveRecord::Migration[4.2]
   def up
   end
 

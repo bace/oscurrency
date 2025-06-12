@@ -1,4 +1,4 @@
-class AddDescriptionToClientApplication < ActiveRecord::Migration
+class AddDescriptionToClientApplication < ActiveRecord::Migration[4.2]
   def self.up
     add_column :client_applications, :description, :string
   end

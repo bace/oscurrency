@@ -1,4 +1,4 @@
-class FixMessageParentId < ActiveRecord::Migration
+class FixMessageParentId < ActiveRecord::Migration[4.2]
   def self.up
     # This converts the communications parent_id from a string to an integer.
     # Amazingly, it works as a string, which is why it took a while to

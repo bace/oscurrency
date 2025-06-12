@@ -1,4 +1,4 @@
-class RemoveSessionColumn < ActiveRecord::Migration
+class RemoveSessionColumn < ActiveRecord::Migration[4.2]
   def self.up
     remove_column :page_views, :session
   end

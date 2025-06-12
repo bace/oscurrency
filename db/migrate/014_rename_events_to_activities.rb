@@ -1,4 +1,4 @@
-class RenameEventsToActivities < ActiveRecord::Migration
+class RenameEventsToActivities < ActiveRecord::Migration[4.2]
   def self.up
     remove_index :events, :item_id
     remove_index :events, :item_type

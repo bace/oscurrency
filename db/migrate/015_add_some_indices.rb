@@ -1,4 +1,4 @@
-class AddSomeIndices < ActiveRecord::Migration
+class AddSomeIndices < ActiveRecord::Migration[4.2]
   def self.up
     add_index :people, :admin
     add_index :people, :deactivated

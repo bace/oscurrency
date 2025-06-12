@@ -1,4 +1,4 @@
-class CreateAttendeesToEvents < ActiveRecord::Migration
+class CreateAttendeesToEvents < ActiveRecord::Migration[4.2]
   def self.up
     create_table :event_attendees do |t|
       t.references :person

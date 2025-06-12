@@ -1,4 +1,4 @@
-class AddDisqusShortnamePreferences < ActiveRecord::Migration
+class AddDisqusShortnamePreferences < ActiveRecord::Migration[4.2]
   def self.up
     add_column :preferences, :disqus_shortname, :string
   end

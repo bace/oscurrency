@@ -1,4 +1,4 @@
-class AddServerNameAndApp < ActiveRecord::Migration
+class AddServerNameAndApp < ActiveRecord::Migration[4.2]
   def self.up
     add_column :preferences, :server_name, :string
     add_column :preferences, :app_name, :string

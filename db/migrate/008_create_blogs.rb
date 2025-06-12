@@ -1,4 +1,4 @@
-class CreateBlogs < ActiveRecord::Migration
+class CreateBlogs < ActiveRecord::Migration[4.2]
   def self.up
     create_table :blogs do |t|
       t.integer :person_id

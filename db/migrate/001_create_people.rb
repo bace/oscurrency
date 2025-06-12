@@ -1,4 +1,4 @@
-class CreatePeople < ActiveRecord::Migration
+class CreatePeople < ActiveRecord::Migration[4.2]
   def self.up
     create_table "people", :force => true do |t|
       t.string   :email, :name, :crypted_password

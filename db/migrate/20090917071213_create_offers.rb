@@ -1,4 +1,4 @@
-class CreateOffers < ActiveRecord::Migration
+class CreateOffers < ActiveRecord::Migration[4.2]
   def self.up
     create_table :offers do |t|
       t.string :name

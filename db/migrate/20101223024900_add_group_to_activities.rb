@@ -1,4 +1,4 @@
-class AddGroupToActivities < ActiveRecord::Migration
+class AddGroupToActivities < ActiveRecord::Migration[4.2]
   def self.up
     add_column :activities, :group_id, :integer
   end

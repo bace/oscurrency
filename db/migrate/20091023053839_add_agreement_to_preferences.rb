@@ -1,4 +1,4 @@
-class AddAgreementToPreferences < ActiveRecord::Migration
+class AddAgreementToPreferences < ActiveRecord::Migration[4.2]
   def self.up
     add_column :preferences, :agreement, :text
   end

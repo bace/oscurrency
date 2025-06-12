@@ -1,4 +1,4 @@
-class AddLanguagePeople < ActiveRecord::Migration
+class AddLanguagePeople < ActiveRecord::Migration[4.2]
   def self.up
     add_column :people, :language, :string
   end

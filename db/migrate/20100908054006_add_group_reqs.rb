@@ -1,4 +1,4 @@
-class AddGroupReqs < ActiveRecord::Migration
+class AddGroupReqs < ActiveRecord::Migration[4.2]
   def self.up
     add_column :reqs, :group_id, :integer
   end

@@ -1,4 +1,4 @@
-class AddAssetToGroups < ActiveRecord::Migration
+class AddAssetToGroups < ActiveRecord::Migration[4.2]
   def self.up
     add_column :groups, :asset, :string
   end

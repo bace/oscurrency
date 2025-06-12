@@ -1,4 +1,4 @@
-class AddNewMemberNotificationPreferences < ActiveRecord::Migration
+class AddNewMemberNotificationPreferences < ActiveRecord::Migration[4.2]
   def self.up
     add_column :preferences, :new_member_notification, :string
     remove_column :preferences, :registration_notification

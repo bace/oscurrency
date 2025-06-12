@@ -1,4 +1,4 @@
-class CreateMemberPreferences < ActiveRecord::Migration
+class CreateMemberPreferences < ActiveRecord::Migration[4.2]
   def self.up
     create_table :member_preferences do |t|
       t.boolean :req_notifications, :default => true

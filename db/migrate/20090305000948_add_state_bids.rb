@@ -1,4 +1,4 @@
-class AddStateBids < ActiveRecord::Migration
+class AddStateBids < ActiveRecord::Migration[4.2]
   def self.up
     add_column :bids, :state, :string
   end

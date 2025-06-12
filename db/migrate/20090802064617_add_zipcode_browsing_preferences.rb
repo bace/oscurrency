@@ -1,4 +1,4 @@
-class AddZipcodeBrowsingPreferences < ActiveRecord::Migration
+class AddZipcodeBrowsingPreferences < ActiveRecord::Migration[4.2]
   def self.up
     add_column :preferences, :zipcode_browsing, :boolean, :default => false
   end

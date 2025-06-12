@@ -1,4 +1,4 @@
-class AddActiveBoolReqs < ActiveRecord::Migration
+class AddActiveBoolReqs < ActiveRecord::Migration[4.2]
   def self.up
     add_column :reqs, :active, :boolean, :default => true
   end

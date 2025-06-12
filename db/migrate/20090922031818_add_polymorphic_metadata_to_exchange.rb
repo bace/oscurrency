@@ -1,4 +1,4 @@
-class AddPolymorphicMetadataToExchange < ActiveRecord::Migration
+class AddPolymorphicMetadataToExchange < ActiveRecord::Migration[4.2]
   class Exchange < ActiveRecord::Base; end
 
   def self.up

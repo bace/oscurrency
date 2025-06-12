@@ -1,4 +1,4 @@
-class CreateNeighborhoodsOffers < ActiveRecord::Migration
+class CreateNeighborhoodsOffers < ActiveRecord::Migration[4.2]
   def self.up
     create_table :neighborhoods_offers, :id => false do |t|
       t.column :neighborhood_id, :integer, :null => false

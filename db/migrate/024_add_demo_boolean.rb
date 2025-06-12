@@ -1,4 +1,4 @@
-class AddDemoBoolean < ActiveRecord::Migration
+class AddDemoBoolean < ActiveRecord::Migration[4.2]
   def self.up
     add_column :preferences, :demo, :boolean, :default => false
   end

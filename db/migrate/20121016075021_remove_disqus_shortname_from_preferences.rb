@@ -1,4 +1,4 @@
-class RemoveDisqusShortnameFromPreferences < ActiveRecord::Migration
+class RemoveDisqusShortnameFromPreferences < ActiveRecord::Migration[4.2]
   def up
     remove_column :preferences, :disqus_shortname
   end

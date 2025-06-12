@@ -1,4 +1,4 @@
-class AddTimestampsBids < ActiveRecord::Migration
+class AddTimestampsBids < ActiveRecord::Migration[4.2]
   def self.up
     add_column :bids, :accepted_at, :datetime
     add_column :bids, :committed_at, :datetime

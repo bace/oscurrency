@@ -1,4 +1,4 @@
-class AddGmailPreferences < ActiveRecord::Migration
+class AddGmailPreferences < ActiveRecord::Migration[4.2]
   def self.up
     add_column :preferences, :gmail, :string
   end

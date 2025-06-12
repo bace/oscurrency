@@ -1,4 +1,4 @@
-class CreateConversations < ActiveRecord::Migration
+class CreateConversations < ActiveRecord::Migration[4.2]
   def self.up
     create_table :conversations do |t|
       # We only need the id, but the migration chokes if we don't pass a block.

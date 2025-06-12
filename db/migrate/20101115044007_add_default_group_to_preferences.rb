@@ -1,4 +1,4 @@
-class AddDefaultGroupToPreferences < ActiveRecord::Migration
+class AddDefaultGroupToPreferences < ActiveRecord::Migration[4.2]
   def self.up
     add_column :preferences, :default_group_id, :integer
   end

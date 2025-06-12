@@ -1,4 +1,4 @@
-class AddTwitterConsumerCredsPreferences < ActiveRecord::Migration
+class AddTwitterConsumerCredsPreferences < ActiveRecord::Migration[4.2]
   def self.up
     add_column :preferences, :twitter_oauth_consumer_key, :string
     add_column :preferences, :crypted_twitter_oauth_consumer_secret, :string

@@ -1,4 +1,4 @@
-class AddFirstLetterPeople < ActiveRecord::Migration
+class AddFirstLetterPeople < ActiveRecord::Migration[4.2]
   def self.up
     add_column :people, :first_letter, :string
   end

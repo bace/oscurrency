@@ -1,4 +1,4 @@
-class AddTwitterCredsPreferences < ActiveRecord::Migration
+class AddTwitterCredsPreferences < ActiveRecord::Migration[4.2]
   def self.up
     add_column :preferences, :twitter_name, :string
     add_column :preferences, :crypted_twitter_password, :string

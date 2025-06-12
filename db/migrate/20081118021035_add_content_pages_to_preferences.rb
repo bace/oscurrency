@@ -1,4 +1,4 @@
-class AddContentPagesToPreferences < ActiveRecord::Migration
+class AddContentPagesToPreferences < ActiveRecord::Migration[4.2]
   def self.up
     add_column :preferences, :practice, :text
     add_column :preferences, :steps, :text

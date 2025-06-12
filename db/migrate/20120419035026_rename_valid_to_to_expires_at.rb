@@ -1,4 +1,4 @@
-class RenameValidToToExpiresAt < ActiveRecord::Migration
+class RenameValidToToExpiresAt < ActiveRecord::Migration[4.2]
   def up
     rename_column :oauth_tokens, :valid_to, :expires_at
   end

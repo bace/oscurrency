@@ -1,4 +1,4 @@
-class PopulateCategories < ActiveRecord::Migration
+class PopulateCategories < ActiveRecord::Migration[4.2]
   def self.up
   end
 

@@ -1,4 +1,4 @@
-class RemoveFilenameFromPhotos < ActiveRecord::Migration
+class RemoveFilenameFromPhotos < ActiveRecord::Migration[4.2]
   def up
     remove_column :photos, :filename
   end

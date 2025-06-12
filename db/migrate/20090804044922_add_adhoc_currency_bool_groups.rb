@@ -1,4 +1,4 @@
-class AddAdhocCurrencyBoolGroups < ActiveRecord::Migration
+class AddAdhocCurrencyBoolGroups < ActiveRecord::Migration[4.2]
   def self.up
     add_column :groups, :adhoc_currency, :boolean, :default => false
   end

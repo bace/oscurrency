@@ -1,4 +1,4 @@
-class AddUnitGroups < ActiveRecord::Migration
+class AddUnitGroups < ActiveRecord::Migration[4.2]
   def self.up
     add_column :groups, :unit, :string
   end

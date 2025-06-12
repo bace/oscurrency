@@ -1,4 +1,4 @@
-class CreateEventsAndFeed < ActiveRecord::Migration
+class CreateEventsAndFeed < ActiveRecord::Migration[4.2]
   def self.up
     create_table :events do |t|
       t.boolean :public

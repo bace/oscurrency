@@ -1,4 +1,4 @@
-class AddTwitterApiPreferences < ActiveRecord::Migration
+class AddTwitterApiPreferences < ActiveRecord::Migration[4.2]
   def self.up
     add_column :preferences, :twitter_api, :string
   end

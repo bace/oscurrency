@@ -1,4 +1,4 @@
-class CreateFeedPosts < ActiveRecord::Migration
+class CreateFeedPosts < ActiveRecord::Migration[4.2]
   def self.up
     create_table :feed_posts do |t|
       t.string :feedid

@@ -1,4 +1,4 @@
-class RemoveForumNotificationsFromPeople < ActiveRecord::Migration
+class RemoveForumNotificationsFromPeople < ActiveRecord::Migration[4.2]
   def up
     remove_column :people, :forum_notifications
   end

@@ -1,4 +1,4 @@
-class AddSmtpPortToPreferences < ActiveRecord::Migration
+class AddSmtpPortToPreferences < ActiveRecord::Migration[4.2]
   def self.up
     add_column :preferences, :smtp_port, :integer
   end

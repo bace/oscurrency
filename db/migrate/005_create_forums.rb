@@ -1,5 +1,4 @@
-class CreateForums < ActiveRecord::Migration
-  
+class CreateForums < ActiveRecord::Migration[4.2]
   class Forum < ActiveRecord::Base
   end
   

@@ -1,4 +1,4 @@
-class AddGroupExchanges < ActiveRecord::Migration
+class AddGroupExchanges < ActiveRecord::Migration[4.2]
   def self.up
     add_column :exchanges, :group_id, :integer
   end

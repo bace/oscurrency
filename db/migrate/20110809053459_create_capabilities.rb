@@ -1,4 +1,4 @@
-class CreateCapabilities < ActiveRecord::Migration
+class CreateCapabilities < ActiveRecord::Migration[4.2]
   def self.up
     create_table :capabilities do |t|
       t.integer :group_id

@@ -1,4 +1,4 @@
-class AddActivatorToPeople < ActiveRecord::Migration
+class AddActivatorToPeople < ActiveRecord::Migration[4.2]
   def self.up
     add_column :people, :activator, :boolean, :default => false
   end

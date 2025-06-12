@@ -1,4 +1,4 @@
-class AddGroupsToPreferences < ActiveRecord::Migration
+class AddGroupsToPreferences < ActiveRecord::Migration[4.2]
   def self.up
     add_column :preferences, :groups, :boolean, :default => true, :null => false
   end

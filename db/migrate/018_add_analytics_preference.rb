@@ -1,4 +1,4 @@
-class AddAnalyticsPreference < ActiveRecord::Migration
+class AddAnalyticsPreference < ActiveRecord::Migration[4.2]
   def self.up
     add_column :preferences, :analytics, :text
   end
