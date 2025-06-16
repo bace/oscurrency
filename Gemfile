@@ -31,7 +31,6 @@ gem "uuid"
 # gem 'jquery-rails'
 
 #gem "rack", '= 1.2.2'   #Heroku seems to force this
-gem 'dynamic_form', '1.1.4'
 gem "oauth", '0.4.4'
 
 gem "feed-normalizer"

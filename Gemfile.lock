@@ -152,7 +152,6 @@ GEM
     dotenv-rails (2.8.1)
       dotenv (= 2.8.1)
       railties (>= 3.2)
-    dynamic_form (1.1.4)
     erubi (1.13.1)
     exception_notification (4.5.0)
       actionmailer (>= 5.2, < 8)
@@ -500,7 +499,6 @@ DEPENDENCIES
   dalli (= 2.7.6)
   database_cleaner
   dotenv-rails
-  dynamic_form (= 1.1.4)
   exception_notification
   feed-normalizer
   fog-aws
