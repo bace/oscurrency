@@ -13,7 +13,6 @@
 - Internationalization includes Spanish, Greek, French
 - Advanced Search Filters
 - Email Notification for matched requests
-- [Easy Heroku installation and update](https://github.com/oscurrency/oscurrency/wiki/Heroku-Deployment-Guide)
 
 ### Install
 
@@ -29,8 +28,6 @@ Update a Heroku deployment with:
 
     $ rake heroku:update
     
-**Tutorial for Heroku install**: [A Guide for Non-Developers who want to deploy OSCurrency](https://github.com/oscurrency/oscurrency/wiki/Heroku-Deployment-Guide)
-
 ### Admin user
 
 To sign in as the pre-configured admin user, use
