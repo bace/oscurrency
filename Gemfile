@@ -49,7 +49,7 @@ gem "will_paginate", '3.3.1'
 gem "aasm", '3.0.19'
 gem "authlogic", '6.3.0'
 gem "scrypt"
-gem "cancancan", "3.0.2"
+gem "cancancan", "3.2.2"
 gem "dalli", "2.7.6"
 gem "redcarpet"
 gem 'syck'

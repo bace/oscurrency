@@ -166,7 +166,8 @@ class Ability
       bid.person == person || bid.req.person == person
     end
     can :destroy, Bid do |bid|
-      person.admin? || bid.person == person
+      referenced = bid.committed_at.present? || bid.approved_at.present?
+      !referenced && (person.admin? || bid.person == person)
     end
 
     can :read, Exchange

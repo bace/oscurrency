@@ -1,12 +1,11 @@
 class BidsController < ApplicationController
-  load_resource :req
-  authorize_resource :bid, :through => :req
   before_action :login_required
+  load_resource :req
+  load_and_authorize_resource :bid, :through => :req
 
   # POST /bids
   # POST /bids.xml
   def create
-    @bid = @req.bids.new(bid_params)
     @bid.person = current_person
 
     respond_to do |format|
@@ -22,7 +21,6 @@ class BidsController < ApplicationController
   # PUT /bids/1
   # PUT /bids/1.xml
   def update
-    @bid = Bid.find(params[:id])
     case params[:aasm_event]
     when 'accept'
       if current_person?(@bid.req.person)
@@ -59,7 +57,6 @@ class BidsController < ApplicationController
   # DELETE /bids/1
   # DELETE /bids/1.xml
   def destroy
-    @bid = Bid.find(params[:id])
     @bid.destroy
 
     respond_to do |format|

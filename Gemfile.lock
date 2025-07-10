@@ -116,7 +116,7 @@ GEM
     builder (3.3.0)
     calendar_helper (0.2.6)
       open4
-    cancancan (3.0.2)
+    cancancan (3.2.2)
     carrierwave (2.2.0)
       activemodel (>= 5.0.0)
       activesupport (>= 5.0.0)
@@ -492,7 +492,7 @@ DEPENDENCIES
   bootsnap (= 1.10.0)
   bootstrap_form!
   calendar_helper
-  cancancan (= 3.0.2)
+  cancancan (= 3.2.2)
   carrierwave
   coffee-rails
   concurrent-ruby (= 1.3.4)
