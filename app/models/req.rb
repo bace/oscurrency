@@ -44,11 +44,11 @@ class Req < ApplicationRecord
   end
 
   def considered_active?
-    active? && (due_date > DateTime.now)
+    active?
   end
 
   def deactivate
-    update(:active => false)
+    update(active: false, biddable: false)
   end
 
   def has_accepted_bid?
