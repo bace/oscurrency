@@ -19,7 +19,6 @@ class TopicsController < ApplicationController
     end
     @post = ForumPost.new
     respond_to do |format|
-      format.html
       format.js do
         if request.xhr?
           @refresh_milliseconds = global_prefs.topic_refresh_seconds * 1000
@@ -39,10 +38,7 @@ class TopicsController < ApplicationController
     respond_to do |format|
       if @topic.save
         flash[:notice] = t('success_topic_created')
-        format.html { redirect_to forum_topic_path(@forum, @topic) }
         format.js
-      else
-        format.html { render :action => "new" }
       end
     end
   end

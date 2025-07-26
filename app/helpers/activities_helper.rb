@@ -107,7 +107,7 @@ module ActivitiesHelper
       topic = text              # Eh?  This makes no sense...
       text = topic.name
     end
-    link_to(h(text), forum_topic_path(topic.forum, topic), :class => "show-follow")
+    link_to(h(text), group_path(Group.find(topic.forum.group_id), :anchor => "forums/#{topic.forum_id}/topics/#{topic.id}"))
   end
 
   def metadata_link(metadata)
