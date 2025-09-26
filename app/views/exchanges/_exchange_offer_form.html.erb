@@ -1,5 +1,5 @@
 <%= bootstrap_form_for @exchange, :url => person_exchanges_path(@person), :html => {:id => 'new_exchange'} do |f| %>
-  <%= f.text_field :amount, :value=> nice_decimal(@offer.price), :help => @offer.unit.pluralize,  :size => 3, :disabled => true, "data-offer_price"=> @offer.price %>
+  <%= f.text_field :amount, :value=> nice_decimal(@offer.price), :help => @offer.unit&.pluralize || default_group_currency_unit&.pluralize,  :size => 3, :disabled => true, "data-offer_price"=> @offer.price %>
   <%= fields_for :offer do |o| %>
     <div class="form_row">
       <%= o.label 'For:' %>
