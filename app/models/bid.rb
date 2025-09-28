@@ -98,7 +98,8 @@ class Bid < ApplicationRecord
       bid_note.content = ""
       bid_note.content << "#{private_message_to_requestor}\n--\n\n" if private_message_to_requestor.present?
       unless server.empty?
-        bid_note.content << "See your <a href=\"#{req_url(self.req, :host => server)}\">request</a> to consider bid"
+        reqs_anchor = "reqs/#{req.id}"
+        bid_note.content << "See your [request](#{group_url(self.req.group, :host => server, :anchor => reqs_anchor)}) to consider bid"
       end
       bid_note.sender = self.person
       bid_note.recipient = self.req.person
@@ -110,7 +111,8 @@ class Bid < ApplicationRecord
     Message.create! do |bid_note|
       bid_note.subject = "Bid accepted for #{req.name}"
       unless server.empty?
-        bid_note.content = "See the <a href=\"#{req_url(self.req, :host => server)}\">request</a> to commit to bid"
+        reqs_anchor = "reqs/#{req.id}"
+        bid_note.content = "See the [request](#{group_url(self.req.group, :host => server, :anchor => reqs_anchor)}) to commit to bid"
       else
         bid_note.content = ''
       end
@@ -124,7 +126,8 @@ class Bid < ApplicationRecord
     Message.create! do |bid_note|
       bid_note.subject = "Bid committed for #{req.name}"
       unless server.empty?
-        bid_note.content = "Commitment made for your <a href=\"#{req_url(self.req, :host => server)}\">request</a>. This is an automated message"
+        reqs_anchor = "reqs/#{req.id}"
+        bid_note.content = "Commitment made for your [request](#{group_url(self.req.group, :host => server, :anchor => reqs_anchor)}). This is an automated message"
       else
         bid_note.content = ''
       end
@@ -138,7 +141,8 @@ class Bid < ApplicationRecord
     Message.create! do |bid_note|
       bid_note.subject = "Work completed for #{req.name}"
       unless server.empty?
-        bid_note.content = "Work completed for your <a href=\"#{req_url(self.req, :host => server)}\">request</a>. Please approve transaction! This is an automated message"
+        reqs_anchor = "reqs/#{req.id}"
+        bid_note.content = "Work completed for your [request](#{group_url(self.req.group, :host => server, :anchor => reqs_anchor)}). Please approve transaction! This is an automated message"
       else
         bid_note.content = ''
       end
