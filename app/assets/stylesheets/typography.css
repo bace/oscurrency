@@ -319,3 +319,14 @@ strong { font-weight: bold; }
 .highlight  { background:#ff0; }
 .added      { background:#060; color: #fff; }
 .removed    { background:#900; color: #fff; }
+
+body {
+  font-size: 14px; /* matches Bootstrap 3 base font size */
+  line-height: 1.428;
+}
+
+h2, h3, h4, h5, h6 {
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+

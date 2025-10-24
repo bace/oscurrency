@@ -1,7 +1,7 @@
 
 // See: http://stackoverflow.com/questions/4551230/bind-jquery-ui-autocomplete-using-live
 $(function() {
-	$(".recipient_autocomplete:not(.ui-autocomplete-input)").live("focus", function (event) {
+        $(document).on('focus',".recipient_autocomplete:not(.ui-autocomplete-input)", function(event) {
 		$(this).autocomplete({
 			source: function(request, response) {
 		        $.ajax({
@@ -40,13 +40,13 @@ $(function() {
         });  
     }  
     placeholder();
-    $("input[type=text]").live('focus', function() {
+    $(document).on('focus',"input[type=text]", function() {
         var phvalue = $(this).attr("placeholder");  
         if (phvalue == $(this).val()) {  
         	$(this).val("");  
         }  
     });  
-    $("input[type=text]").live('blur', function() {
+    $(document).on('blur',"input[type=text]", function() {
         var phvalue = $(this).attr("placeholder");  
         if ($(this).val() == "") {  
             $(this).val(phvalue);  

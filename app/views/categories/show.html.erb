@@ -1,4 +1,4 @@
-<div class="span8">
+<div class="col-sm-8">
 <h2><%=h @category.long_name %></h2>
   <h2><%= t('offers.index.header') %></h2>
   <% if @offers.empty? %>
@@ -10,7 +10,7 @@
   <%- end -%>
 </div>
 
-<div class="span3">
+<div class="col-sm-3">
   <%- if admin? -%>
     <h2><%=h t('button_edit') %></h2>
     <%= link_to t('button_edit'), edit_category_path(@category) %>

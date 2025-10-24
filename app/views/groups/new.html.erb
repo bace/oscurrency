@@ -21,7 +21,7 @@
   }
 </script>
   <h2><%= t('groups.new.header') %></h2>
-  <div class="span5">
+  <div class="col-sm-5">
   <%= bootstrap_form_for(@group) do |f| %>
     <%= f.text_field :name, label: t('groups.new.name') %>
 

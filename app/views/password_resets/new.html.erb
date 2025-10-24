@@ -1,7 +1,7 @@
-<div class="span3">
+<div class="col-sm-3">
   <h2><%= t('password_resets.new.header') %></h2>
   <%= form_tag password_resets_path do %>
-    <div class="control-group">
+    <div class="form-group">
       <label for="email" class="control-label"><%= t('sessions.new.email_address') %></label>
       <div class="controls">
         <%= email_field_tag :email %>

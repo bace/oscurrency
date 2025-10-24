@@ -168,7 +168,7 @@ $(function() {
     return response;
   }
 
-  $(window).hashchange( function() {
+  $(window).on('hashchange', function() {
       var hash = location.hash;
       var js_url = "";
       var tab = "";
@@ -210,7 +210,7 @@ $(function() {
       OSCURRENCY.post_allowed = true;
     });
 
-  $("input#bid_expiration_date").live('focus', function() {
+  $(document).on('focus',"input#bid_expiration_date", function() {
     $(this).datepicker({
       buttonImage: "/images/calendar.gif",
       buttonImageOnly: true,
@@ -218,7 +218,7 @@ $(function() {
       });
     });
 
-  $("input#req_due_date, input#req_respond_by_date").live('focus', function() {
+  $(document).on('focus',"input#req_due_date, input#req_respond_by_date", function() {
     $(this).datepicker({
       buttonImage: "/images/calendar.gif",
       buttonImageOnly: true,
@@ -226,7 +226,7 @@ $(function() {
       });
     });
 
-  $("input#offer_expiration_date").live('focus', function() {
+  $(document).on('focus',"input#offer_expiration_date", function() {
     $(this).datepicker({
       buttonImage: "/images/calendar.gif",
       buttonImageOnly: true,
@@ -234,7 +234,7 @@ $(function() {
       });
     });
 
-  $('.edit_member_preference, #new_bid, .edit_bid,  #new_topic, #new_post, #new_exchange, #new_wall_post, #tabs #new_message').live('submit',function() {
+  $(document).on('submit','.edit_member_preference, #new_bid, .edit_bid,  #new_topic, #new_post, #new_exchange, #new_wall_post, #tabs #new_message', function() {
       if(OSCURRENCY.post_allowed) {
         OSCURRENCY.post_allowed = false;
         $.post($(this).attr('action'),$(this).serialize(),null,'script');
@@ -244,7 +244,7 @@ $(function() {
       return false;
     });
 
-  $('.search_form').live('submit',function() {
+  $(document).on('submit',".search_form", function() {
       current_tab = window.location.hash.split('/')[0];
       if(-1 == OSCURRENCY.searchable_tabs.indexOf(current_tab)) {
         var frags = window.location.pathname.split('/');
@@ -262,7 +262,7 @@ $(function() {
       return false;
     });
 
-  $('.add_to_memberships').live('click', function() {
+  $(document).on('click',".add_to_memberships", function() {
       if(confirm('Are you sure?'))
       {
         id_name = $(this).children('a').attr('id');
@@ -273,7 +273,7 @@ $(function() {
       return false;
     });
 
-  $('.delete_topic, .delete_post, .delete_req, .delete_offer, .delete_bid').live('click', function() {
+  $(document).on('click','.delete_topic, .delete_post, .delete_req, .delete_offer, .delete_bid', function() {
       if(confirm('Delete?'))
       {
         var data = {'_method': 'delete'}
@@ -282,13 +282,13 @@ $(function() {
       return false;
     });
 
-  $('.deactivate_req').live('click', function() {
+  $(document).on('click','.deactivate_req', function() {
     var data = {'_method': 'deactivate'}
     $.post($(this).attr('href'),data,null,'script');
     return false;
   });
 
-  $('.per_page').live('click', function() {
+  $(document).on('click','.per_page', function() {
     var number_clicked = $(this).attr('data-ppp');
     var data = {'_method': 'put', 'person': {'posts_per_page': number_clicked}}
     $('.per_page').removeClass('btn btn-small btn-primary');
@@ -297,12 +297,12 @@ $(function() {
     return false;
   });
 
-  $('a.pay_now').live('click', function() {
+  $(document).on('click','a.pay_now', function() {
     window.location.hash = url2hash(this.href);
     return false;
     });
 
-  $('body.groups .pagination a').live('click',function() {
+  $(document).on('click','body.groups .pagination a', function() {
     str = url2hash(this.href);
     // XXX hack until hash is renamed to match
     str = str.replace(/memberships/,'people');
@@ -339,32 +339,32 @@ $(function() {
       window.location.hash = '#people';
     });
 
-  $('.category_filter #req_category_ids').live('change',function() {
+  $(document).on('change','.category_filter #req_category_ids', function() {
     window.location.hash = '#requests/category_id=' + this.value;
     });
 
-  $('.category_filter #offer_category_ids').live('change',function() {
+  $(document).on('change','.category_filter #offer_category_ids', function() {
     window.location.hash = '#offers/category_id=' + this.value;
     });
 
-  $('.category_filter #person_category_ids').live('change',function() {
+  $(document).on('change','.category_filter #person_category_ids', function() {
     window.location.hash = '#people/category_id=' + this.value;
     });
 
 
-  $('.neighborhood_filter #req_neighborhood_ids').live('change',function() {
+  $(document).on('change','.neighborhood_filter #req_neighborhood_ids', function() {
     window.location.hash = '#requests/neighborhood_id=' + this.value;
     });
 
-  $('.neighborhood_filter #offer_neighborhood_ids').live('change',function() {
+  $(document).on('change','.neighborhood_filter #offer_neighborhood_ids', function() {
     window.location.hash = '#offers/neighborhood_id=' + this.value;
     });
 
-  $('.neighborhood_filter #person_neighborhood_ids').live('change',function() {
+  $(document).on('change','.neighborhood_filter #person_neighborhood_ids', function() {
     window.location.hash = '#people/neighborhood_id=' + this.value;
     });
 
-  $('#filter_reqs_by, #filter_offers_by, #filter_memberships_by').live('change',function() {
+  $(document).on('change','#filter_reqs_by, #filter_offers_by, #filter_memberships_by', function() {
     var current_hash_root = window.location.hash.split('/')[0]; 
     var current_filter = current_hash_root + '_filter';
     if(OSCURRENCY.categories_filter_option == this.value) {
@@ -380,12 +380,12 @@ $(function() {
     }
     });
 
-  $('a.show-follow').live('click',function() {
+  $(document).on('click','a.show-follow', function() {
     window.location.hash = url2hash(this.href);
     return false;
     });
 
-  $('a.show-category').live('click',function() {
+  $(document).on('click','a.show-category', function() {
     names = ['url', 'scheme', 'slash', 'host', 'port','path', 'query', 'hash'];
     result = parse_url(this.href);
     query = result[names.indexOf('query')]
@@ -400,7 +400,7 @@ $(function() {
     return false;
     });
 
-  $('a.email-link:not(.noajax)').live('click',function() {
+  $(document).on('click','a.email-link:not(.noajax)', function() {
     window.location.hash = url2hash(this.href);
     return false;
     });

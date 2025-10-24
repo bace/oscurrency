@@ -1,14 +1,14 @@
 <h2><%= t('.header') %></h2>
 <div class="row">
-  <div class="span6">
+  <div class="col-sm-6">
 
     <%= bootstrap_form_for(@group) do |f| %>
       <fieldset>
         <legend><%= t('.group_data') %></legend>
         <div class="row">
-          <div class="span3">
-            <%= f.text_field :name, label: t('.name'), class: "span3" %>
-            <%= f.text_area :description, label: t('.description'), class: "span3", rows: 10 %>
+          <div class="col-sm-3">
+            <%= f.text_field :name, label: t('.name'), class: "col-sm-3" %>
+            <%= f.text_area :description, label: t('.description'), class: "col-sm-3", rows: 10 %>
             <%= t('.default_member_roles') %></br>
             <% for role in (Membership::ROLES - Membership::EXCLUDE_ROLES) %>
               <%= check_box_tag "group[default_roles][]", role, @group.default_roles.include?(role) %>
@@ -16,12 +16,12 @@
             <% end %>
             <%= hidden_field_tag "group[default_roles][]", "" %>
           </div>
-          <div class="span3">
+          <div class="col-sm-3">
 
             <%- if @group.adhoc_currency? -%>
-              <%= f.text_field :unit, label: t('.currency_unit_singular'), class: "span3" %>
-              <%= f.text_field :asset, disabled: !@group.asset.nil?, label: t('.asset'), class: "span3" %>
-              <%= f.text_field :default_credit_limit, label: t('.default_credit_limit'), size: 5, class: "span3" %>
+              <%= f.text_field :unit, label: t('.currency_unit_singular'), class: "col-sm-3" %>
+              <%= f.text_field :asset, disabled: !@group.asset.nil?, label: t('.asset'), class: "col-sm-3" %>
+              <%= f.text_field :default_credit_limit, label: t('.default_credit_limit'), size: 5, class: "col-sm-3" %>
 
               <%= f.control_group :display_balance do %>
                 <%= f.check_box :display_balance, label: t('.display_balance') %>
@@ -52,7 +52,7 @@
       </fieldset>
     <% end %>
   </div>
-  <div class="span3">
+  <div class="col-sm-3">
     <legend><%= t('.photos') %></legend>
     
     <% if @group.photos.empty? %>
@@ -78,7 +78,7 @@
       <%= button_to t('.add_a_photo'), new_photo_group_path(@group), :class => "btn btn-primary" %>
   </div>
 
-  <div class="span3">
+  <div class="col-sm-3">
     <legend><%= t('.members') %></legend>
     <p><%= link_to "Edit Member Roles", members_group_path(@group) %></p>
 

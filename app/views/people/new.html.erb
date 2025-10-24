@@ -6,7 +6,7 @@
 
   <%= display global_prefs.registration_intro %>
   <%= bootstrap_form_for @person, :help => :block, :html => {:class => 'form-horizontal'} do |f| -%>
-<div class="span5">
+<div class="col-sm-5">
   <%= f.select :language, [[t('people._language.english'),'en'],[t('people._language.spanish'),'es'],[t('people._language.french'),'fr'],[t('people._language.greek'),'gr']], {:label => t('people._language.language'), :selected => params[:locale]}, {:onchange => "document.location='/signup?locale=' + this.value"} %>
   <fieldset id="creds">
 <span id="standard">
@@ -34,18 +34,18 @@
       </span>
     </div>
   <% end %>
-  <div class="control-group">
+  <div class="form-group">
     <%= f.label t('people.new.which_services'), :class => 'control-label' %>
     <div class="controls">
       <%= render :partial => "shared/select_categories", :locals => { :model_name => 'person' } %>
     </div>
   </div>
 </div>
-<div class="span5">
+<div class="col-sm-5">
   
   <%= f.text_area :description, label: t('people.new.something_about_yourself'), rows: 6 %>
 
-  <div class="control-group">
+  <div class="form-group">
     <%= f.label t('people.new.neighborhood'), :class => 'control-label' %>
     <div class="controls">
       <%= render :partial => "shared/select_neighborhoods", :locals => { :model_name => 'person' } %>
@@ -59,14 +59,14 @@
     <% end %>
     <div id="business_info">
         <%= f.text_field :business_name, label: t('people.edit.business_name') %>
-        <div class="control-group">
+        <div class="form-group">
           <%= f.label t('people.edit.business_type'), :class => 'control-label' %>
           <div class="controls">
             <%= render :partial => "shared/select_business_type", :locals => { :model_name => 'person' } %>
           </div>
         </div>
     </div>
-    <div class="control-group">
+    <div class="form-group">
       <div class="controls">
         <label class="checkbox" for="person_accept_agreement">
           <input name="person[accept_agreement]" type="hidden" value="0" />

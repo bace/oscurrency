@@ -1,7 +1,7 @@
 <%- if @member_preference.membership.is?(:admin) -%>
   <%= render 'shared/group_admin_alert' %>
 <%- end -%>
-<div class="span8">
+<div class="col-sm-8">
 <div style='width:320px;float:left;'>
 <h2><%= t('people.edit.email_notification_preferences') %></h2>
 <%= bootstrap_form_for @member_preference, :html => {:class => 'form-horizontal edit_member_preference'} do |f| %>

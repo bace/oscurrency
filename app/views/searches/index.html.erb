@@ -1,5 +1,5 @@
 <h2><%= t('searches.search_results') %></h2>
-<div class="span10">
+<div class="col-sm-10">
   <%= will_paginate(@page_results, :renderer => BootstrapPaginationHelper::LinkRenderer) %>
   <%- if @page_results.empty? -%>
     <h3><%= t('searches.no_result') %></h3>

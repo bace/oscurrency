@@ -7,7 +7,6 @@
 //  require jquery.ui.datepicker
 //  require jquery.ui.autocomplete
 //= require jquery.timeago
-//= require jquery.ba-hashchange.min
 //= require jquery.linkify-1.0-min
 //= require bid_form.js
 //= require group.js

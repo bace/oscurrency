@@ -66,7 +66,7 @@ class ApplicationController < ActionController::Base
     def bootstrap_class(flash_key)
       {notice: 'alert-success',
        success: 'alert-success',
-       error: 'alert-error',
+       error: 'alert-danger',
        alert: 'alert-info'}[flash_key] || ''
     end
 

@@ -1,5 +1,5 @@
   <%- unless @membership %>
-    <div class="group-photo span3">
+    <div class="group-photo col-sm-3">
       <%= image_tag @group.main_photo, :class => "profile-image photo", :alt => h(@group.name) %>
     </div>
     <%= h(@group.description) %>

@@ -1,5 +1,5 @@
 <%- if @group.description.blank? -%>
-  <div class="alert alert-error">
+  <div class="alert alert-danger">
     <%= t('groups.show.blank_description') %>
     <%= link_to t('groups.show.add_description'),
             edit_group_path(@group) %>

@@ -1,4 +1,4 @@
-<div class="span10">
+<div class="col-sm-10">
   <% if @worker %>
       <h2><%= t('transacts.new.header_simple') %> <%= h @amount %> <%= h @group.unit.pluralize %> <%= t('to') %> <%= h @worker.name %> </h2> 
   <% else %>
@@ -6,21 +6,21 @@
   <% end %>
 
 <% if @worker %>
-  <div class="profile vcard span3">
+  <div class="profile vcard col-sm-3">
     <div class="toolbox">
       <%= image_tag @worker.main_photo, :class => "profile-image photo",
                                         :alt => h(@worker.name) %>
     </div>
   </div>
-  <div class="span5">
+  <div class="col-sm-5">
     <%= form_tag transacts_path(:asset => params[:asset]), :class => 'form-horizontal' do %>
-      <div class="control-group">
+      <div class="form-group">
         <label for="amount" class="control-label"><%= t('transacts.new.amount') %></label>
         <div class="controls">
           <%= text_field_tag(:amount,params[:amount],:size => 3) %> <%= h @group.unit.pluralize %>
         </div>
       </div>
-      <div class="control-group">
+      <div class="form-group">
         <label for="note" class="control-label"><%= t('transacts.new.memo') %></label> 
         <div class="controls">
           <%= text_field_tag(:note,params[:note],:size => 20) %>
@@ -36,21 +36,21 @@
 </div>
   <% end %>
 <% else %>
-  <div class="span6">
+  <div class="col-sm-6">
   <%= form_tag transacts_path(:asset => params[:asset]), :class => 'form-horizontal' do %>
-    <div class="control-group">
+    <div class="form-group">
       <label for="to" class="control-label"><%= t('transacts.new.to') %></label>
       <div class="controls">
         <%= text_field_tag(:to,params[:to],:size => 40) %>
       </div>
     </div>
-    <div class="control-group">
+    <div class="form-group">
       <label for="amount" class="control-label"><%= t('transacts.new.amount') %></label>
       <div class="controls">
         <%= text_field_tag(:amount,params[:amount],:size => 3) %> <%= h @group.unit.pluralize %>
       </div>
     </div>
-    <div class="control-group">
+    <div class="form-group">
       <label for="note" class="control-label"><%= t('transacts.new.memo') %></label> 
       <div class="controls">
         <%= text_field_tag(:note,params[:note],:size => 40) %>

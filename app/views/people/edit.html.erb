@@ -1,4 +1,4 @@
-<div class='span6'>
+<div class='col-sm-6'>
   <h2><%= t('people.edit.header') %></h2>
 
   <div id="profile_edit">
@@ -12,14 +12,14 @@
         <span class="categoryAdd"><%= link_to t('people.edit.add_new_category'), new_category_path %></span>
       <% end %>
 
-      <div class="control-group">
+      <div class="form-group">
         <%= f.label t('people.edit.services_offered'), :class => 'control-label' %>
         <div class="classes">
           <%= render :partial => "shared/select_categories", :locals => { :model_name => 'person' } %>
         </div>
       </div>
 
-      <div class="control-group">
+      <div class="form-group">
         <%= f.label t('people.edit.neighborhood'), :class => 'control-label' %>
           <div class="classes">
             <%= render :partial => "shared/select_neighborhoods", :locals => { :model_name => 'person' } %>
@@ -30,7 +30,7 @@
 
       <%= render :partial => 'language', :locals => {:f => f} %>
 
-      <div class="control-group">
+      <div class="form-group">
         <label class="control-label" for="time_zone"><%= t('people.edit.time_zone') %></label>
         <div class="controls">
           <%= f.time_zone_select :time_zone, ActiveSupport::TimeZone.us_zones, {:default => f.object.time_zone || TimeZone.first.time_zone}, {:id => 'time_zone'} %>
@@ -84,7 +84,7 @@
 
         <%= f.text_field :title, label: t('people.edit.title') %>
 
-        <div class="control-group">
+        <div class="form-group">
           <%= f.label t('people.edit.business_type'), :class => 'control-label' %>
           <div class="controls">
             <%= render :partial => "shared/select_business_type", :locals => { :model_name => 'person' } %>
@@ -153,7 +153,7 @@
   <br />
 </div>
 
-<div class='span5'>
+<div class='col-sm-5'>
   <h2><%= t('people.edit.change_your_password') %></h2>
 
     <%= bootstrap_form_for @person, :html => { :id => "change_password" } do |f| %>

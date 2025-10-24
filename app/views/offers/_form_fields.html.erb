@@ -1,22 +1,22 @@
-<div class="span5">
+<div class="col-sm-5">
   <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
   <%= f.text_field :name, :label => t("title"), :size => 40, :maxlength => 255 %>
   <%= f.text_area :description, :label => t("description"), :help => t('offers.new.description_label'), :rows => 5 %>
-  <div class="control-group">
+  <div class="form-group">
     <%= f.label t('filter_categories'), :class => 'control-label' %>
     <div class="controls">
       <%= render :partial => "shared/select_categories", :locals => { :model_name => 'offer' } %>
     </div>
   </div>
 </div>
-<div class="span5">
+<div class="col-sm-5">
   <%= f.text_field :price,  :value=> nice_decimal(f.object.price),  :label => t('price'), :help => @group.unit || Group.find(global_prefs.default_group_id).unit, :size => 5 %>
   <%= f.text_field :expiration_date, :label => t('expiration_date'), :size => 7 %>
   <%= f.text_field :available_count, :label => t('offers.new.available_count'), :size => 2 %>
   <%= f.fields_for :photos do |i| %> 
     <%= i.file_field :picture, label: t('groups.new_photo.upload_a_photo') %> 
   <% end %>
-  <div class="control-group">
+  <div class="form-group">
     <%= f.label t('filter_neighborhoods'), :class => 'control-label' %>
     <div class="controls">
       <%= render :partial => "shared/select_neighborhoods", :locals => { :model_name => 'offer' } %>

@@ -8,13 +8,13 @@
       </h2>
 
     <%- if admin? and not @person.active? -%>
-      <p class="alert alert-error"><%= t('people.show.not_active') %></p>
+      <p class="alert alert-danger"><%= t('people.show.not_active') %></p>
     <%- end -%>
 
     <!-- display warning messages -->
     <%- if current_person?(@person) -%>
       <%- if current_person.description.blank? -%>
-        <div class="alert alert-error">
+        <div class="alert alert-danger">
           <%= t('people.show.description_blank') %>
           <%= link_to t('people.show.add_description'),
                       edit_person_path(@person) %>
@@ -28,7 +28,7 @@
       <%- end -%>
 
       <%- if current_person.address && Person::DEFAULT_ZIPCODE_STRING == current_person.address.zipcode_plus_4 %>
-        <div class="alert alert-error">
+        <div class="alert alert-danger">
           <%= link_to t('people.show.update_location'),
                       edit_person_path(@person) %>. 
           <%= t('people.show.address_remain_private') %>
@@ -38,14 +38,14 @@
     <%- end -%><!-- display warning messages -->
 
 
-      <div class="row-fluid">
+      <div class="row">
 
-        <div class="span3">
+        <div class="col-sm-3">
           <%= image_tag @person.main_photo, :class => "profile-image photo",
                                             :alt => h(@person.display_name) %>
         </div>
 
-        <div class="span5">
+        <div class="col-sm-5">
           <ul>
             <%= render :partial => 'shared/neighborhood', :collection => @person.neighborhoods %>
           </ul>
@@ -77,7 +77,7 @@
         
         </div>
 
-        <div class="span4">
+        <div class="col-sm-4">
           <div class="toolbox">
             <ul class="tools">
             
@@ -136,7 +136,7 @@
               <%- end -%>
             </ul>
           </div>
-        </div> <!-- span4 -->
+        </div> <!-- col-sm-4 -->
 
 
 
@@ -146,7 +146,7 @@
 
   <hr/>
 
-  <div class="row-fluid">
+  <div class="row">
 
     <div class="activity-container">
       <h3>Offers</h3>

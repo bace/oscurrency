@@ -1,7 +1,7 @@
 <%= render :partial => 'shared/jscript', :locals => { :jscript_file_name => 'home' } %>
 
 <div class="row">
-  <div class="span9">
+  <div class="col-sm-9">
     <% pages = %w[about agreement practice policy contact faq].select {|p| global_prefs.send(p).present?} %>
     <ul class="nav nav-tabs">
       <li class="active"><a href="#skillbank" data-toggle="tab"><%= t("home.menu.skillbank") %></a></li>
@@ -22,7 +22,7 @@
     </div>
 
   </div>
-  <div class="span3">
+  <div class="col-sm-3">
     <%= render :partial => 'secondary_column' %>
   </div>
 </div>

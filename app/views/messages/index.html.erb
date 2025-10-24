@@ -1,6 +1,6 @@
   <h2><%= t('messages.index.header') %></h2>
 
-<div class="span7">
+<div class="col-sm-7">
   <%= render :partial => 'message_nav' %>
   
   <%- if @messages.empty? -%>
@@ -13,9 +13,9 @@
     <%= will_paginate(:renderer => BootstrapPaginationHelper::LinkRenderer) %>
   <%- end -%>
 </div>
-<div class="span1">
+<div class="col-sm-1">
 </div>
-<div class="span3">
+<div class="col-sm-3">
   <%= render :partial => 'shared/add_button', :locals => { :button_text => t('messages.new.new_message'), :new_resource_path => new_message_path } %>
   <%= render :partial => 'shared/add_button', :locals => { :button_text => t('messages.new.return_to_dashboard'), :new_resource_path => group_path(current_person.default_group) } %>
 </div>

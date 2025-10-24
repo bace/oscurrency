@@ -5,15 +5,15 @@
   <%== horizontal_formatted_offer_categories offer.long_categories %>
   
   <!-- Content to be displayed in two rows -->
-  <div class="row-fluid">
+  <div class="row">
     
-    <div class="span4">
+    <div class="col-sm-4">
       <div class="border-right">
         <%= offer_image_link offer, :image => :main_photo %>
       </div>
     </div>
 
-    <div class="span8">
+    <div class="col-sm-8">
       <h2><span class='btn'>#<%= offer.id %></span><%= " #{offer.name}" %><%= waiting_image %></h2>
       <p>
         <%= t('exchanges.new.amount') %>: <%= h nice_decimal(offer.price) %> <%= offer.unit %>

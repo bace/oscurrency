@@ -1,12 +1,12 @@
-<div class="span10">
+<div class="col-sm-10">
 <div class="profile vcard">
       <h2><%= t('people.show.header') %> <span class="fn n"><%= h @person.display_name %></span></h2>
     <%- if admin? and not @person.active? -%>
-      <p class="alert alert-error"><%= t('people.show.not_active') %></p>
+      <p class="alert alert-danger"><%= t('people.show.not_active') %></p>
     <%- end -%>
     <%- if current_person?(@person) -%>
       <%- if current_person.description.blank? -%>
-        <div class="alert alert-error">
+        <div class="alert alert-danger">
           <%= t('people.show.description_blank') %>
           <%= link_to t('people.show.add_description'),
                       edit_person_path(@person) %>
@@ -18,7 +18,7 @@
         </div>
       <%- end -%>
       <%- if current_person.address && Person::DEFAULT_ZIPCODE_STRING == current_person.address.zipcode_plus_4 %>
-        <div class="alert alert-error">
+        <div class="alert alert-danger">
           <%= link_to t('people.show.update_location'),
                       edit_person_path(@person) %>. 
           <%= t('people.show.address_remain_private') %>
