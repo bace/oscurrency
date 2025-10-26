@@ -1,8 +1,8 @@
 class TopicsController < ApplicationController
+  before_action :login_required
+
   load_resource :forum
   authorize_resource :topic, :through => :forum
-  
-  before_action :login_required
   
   def index
     redirect_to forum_url(params[:forum_id])
@@ -25,6 +25,10 @@ class TopicsController < ApplicationController
         else
           render :action => 'reject'
         end
+      end
+      format.html do
+        # html request if url was saved location from logged out request
+        redirect_to group_path(@group)
       end
     end
   end

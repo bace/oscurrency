@@ -78,7 +78,12 @@ class ApplicationController < ActionController::Base
       unless current_person
         store_location
         flash[:notice] = t('notice_login_required')
-        redirect_to login_url
+        if request.xhr?
+          # to_json puts the url in quotes
+          render js: "window.top.location = #{login_url.to_json}"
+        else
+          redirect_to login_url
+        end
         return false
       end
     end
