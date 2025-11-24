@@ -23,16 +23,12 @@
     </div>
   </div>
   <% if notify_members %>
-    <%= f.control_group :notifications, label: {text: t('reqs.new.notify_members_email')} do %>
-    <%= f.check_box :notifications, checked: true %>
-  <% end %>
+    <%= f.check_box :notifications, checked: true, label: t('reqs.new.notify_members_email') %>
   <% end %>
   <% if PublicBid.open? %>
-    <%= f.control_group :fadsfdasf, label: {text: t('reqs.new.public_bid')} do %>
-      <%= f.check_box :public_bid, checked: f.object.public_bid || false %>
-    <% end %>
+    <%= f.check_box :public_bid, checked: f.object.public_bid || false, label: t('reqs.new.public_bid') %>
   <% end %>
-  <%= f.actions do %>
+  <div class="form-group">
     <%= f.primary submit_text %><%= waiting_image %>
-  <% end %>
+  </div>
 </div>

@@ -25,24 +25,20 @@
   <%= bootstrap_form_for(@group) do |f| %>
     <%= f.text_field :name, label: t('groups.new.name') %>
 
-    <%= f.control_group :adhoc_currency do %>
-      <%= f.check_box :adhoc_currency, label: t('groups.new.adhoc_currency'), onclick: "toggle_currency_unit(this);" %>
-    <% end %>
+    <%= f.check_box :adhoc_currency, label: t('groups.new.adhoc_currency'), onclick: "toggle_currency_unit(this);" %>
 
     <fieldset id="currency_fields">
       <%= f.text_field :unit, label: t('groups.new.currency_unit_singular'), disabled: true %>
       <%= f.text_field :asset, label: t('groups.new.asset'), size: 8, disabled: true %>
       <%= f.text_field :default_credit_limit, label: t('groups.new.default_credit_limit'), size: 5, disabled: true %>
-      <%= f.control_group :private_txns do %>
-        <%= f.check_box :private_txns, label: t('groups.new.private_txns') %>
-      <% end %>
+      <%= f.check_box :private_txns, label: t('groups.new.private_txns') %>
     </fieldset>
     <%= f.text_area :description, label: t('groups.new.description') %>
 
     <%= f.select :mode, @group.get_groups_modes, label: t('groups.new.mode') %>
 
-    <%= f.actions do %>
+    <div class="form-group">
       <%= f.primary t('button_create') %>
-    <% end %>
+    </div>
   <% end %>
   </div>

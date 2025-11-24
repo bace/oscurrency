@@ -1,9 +1,7 @@
-  <%= form.control_group :address_privacy do %>
-    <% if @address.new_record? %>
-      <%= form.check_box :address_privacy, checked: @current_person.org? ? true : false, label: t('addresses.form.share_address') %>
-    <% else %>
-      <%= form.check_box :address_privacy, label: t('addresses.form.share_address') %>
-    <% end %>
+  <% if @address.new_record? %>
+    <%= form.check_box :address_privacy, checked: @current_person.org? ? true : false, label: t('addresses.form.share_address') %>
+  <% else %>
+    <%= form.check_box :address_privacy, label: t('addresses.form.share_address') %>
   <% end %>
 
   <%= form.text_field :address_line_1, label: t('addresses.form.address_line_1') %>
@@ -14,8 +12,6 @@
 
   <%= form.text_field :city, label: t('addresses.form.city') %>
 
-  <%= form.control_group do %>
-    <%= form.select :state_id, @states, label: {text: t('addresses.form.state')}, include_blank: true %>
-  <% end %>
+  <%= form.select :state_id, @states, label: {text: t('addresses.form.state')}, include_blank: true %>
 
   <%= form.text_field :zipcode_plus_4, label: t('addresses.form.zipcode'), size: 10 %>

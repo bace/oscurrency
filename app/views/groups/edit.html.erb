@@ -23,32 +23,22 @@
               <%= f.text_field :asset, disabled: !@group.asset.nil?, label: t('.asset'), class: "col-sm-3" %>
               <%= f.text_field :default_credit_limit, label: t('.default_credit_limit'), size: 5, class: "col-sm-3" %>
 
-              <%= f.control_group :display_balance do %>
-                <%= f.check_box :display_balance, label: t('.display_balance') %>
-              <% end -%>
-              <%= f.control_group :display_earned do %>
-                <%= f.check_box :display_earned, label: t('.display_earned') %>
-              <% end -%>
-              <%= f.control_group :display_paid do %>
-                <%= f.check_box :display_paid, label: t('.display_paid') %>
-              <% end -%>
-              <%= f.control_group :private_txns do %>
-                <%= f.check_box :private_txns, label: t('.private_txns') %>
-              <% end -%>
+              <%= f.check_box :display_balance, label: t('.display_balance') %>
+              <%= f.check_box :display_earned, label: t('.display_earned') %>
+              <%= f.check_box :display_paid, label: t('.display_paid') %>
+              <%= f.check_box :private_txns, label: t('.private_txns') %>
 
             <%- end -%>
 
-            <%= f.control_group :enable_forum do %>
-              <%= f.check_box :enable_forum, label: t('.enable_forum') %>
-            <% end -%>
+            <%= f.check_box :enable_forum, label: t('.enable_forum') %>
 
             <%= f.select :mode, @group.get_groups_modes, label: t('.mode') %>
 
           </div>
         </div>
-        <%= f.actions do %>
+        <div class="form-group">
           <%= f.primary t('button_update') %>
-        <% end %>
+        </div>
       </fieldset>
     <% end %>
   </div>
@@ -85,33 +75,23 @@
     <%= bootstrap_form_for(@group.privacy_setting, remote: true) do |f| %>
       <legend><%= t('groups.edit.privacy') %></legend>
       <div id='privacy_setting_admin'></div>
-      <%= f.control_group :viewable_reqs do %>
-        <%= f.check_box :viewable_reqs, label: t('privacy_settings.edit.viewable_requests') %>
-      <%- end -%>
-      <%= f.control_group :viewable_offers do %>
-        <%= f.check_box :viewable_offers, label: t('privacy_settings.edit.viewable_offers') %>
-      <%- end -%>
-      <%= f.control_group :viewable_forum do %>
-        <%= f.check_box :viewable_forum, label: t('privacy_settings.edit.viewable_forum') %>
-      <%- end -%>
-      <%= f.control_group :viewable_members do %>
-        <%= f.check_box :viewable_members, label: t('privacy_settings.edit.viewable_members') %>
-      <%- end -%>
-      <%= f.actions do %>
+      <%= f.check_box :viewable_reqs, label: t('privacy_settings.edit.viewable_requests') %>
+      <%= f.check_box :viewable_offers, label: t('privacy_settings.edit.viewable_offers') %>
+      <%= f.check_box :viewable_forum, label: t('privacy_settings.edit.viewable_forum') %>
+      <%= f.check_box :viewable_members, label: t('privacy_settings.edit.viewable_members') %>
+      <div class="form-group">
         <%= f.primary t('button_update') %>
-      <% end %>
+      </div>
     <% end %>
 
     <% if @group.enable_forum and @group.privacy_setting.viewable_forum? %>
       <%= bootstrap_form_for(@group.forum, remote: true) do |f| %>
         <legend><%= t('.forum') %></legend>
         <div id='forum_admin'></div>
-        <%= f.control_group :worldwritable do %>
-          <%= f.check_box :worldwritable, label: t('forums.edit.world_writable') %>
-        <% end -%>
-        <%= f.actions do %>
+        <%= f.check_box :worldwritable, label: t('forums.edit.world_writable') %>
+        <div class="form-group">
           <%= f.primary t('button_update') %>
-        <% end %>
+        </div>
       <% end %>
 
     <% end %>

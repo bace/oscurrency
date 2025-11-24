@@ -3,9 +3,9 @@
 
   <%= bootstrap_form_for @address, :url => person_address_path(current_person,@address), :html => {:method => :put} do |form| %>
     <%= render :partial => 'form', :object => form %>
-    <%= form.actions do %>
+    <div class="form-group">
       <%= form.primary t('button_update') %>
-    <% end %>
+    </div>
   <% end %>
 <% end %>
 

@@ -13,9 +13,7 @@
   <%= bootstrap_form_for @account, :url => person_account_path(@membership.person,@account), :html => {:method => :put} do |f| %>
     <%= f.text_field :credit_limit, label: 'Credit Limit',:help => @account.group.unit.pluralize || Group.find(global_prefs.default_group_id).unit.pluralize, :size => 5 %>
     <%= f.text_field :offset, label: 'Legacy Balance', :help => @account.group.unit.pluralize || Group.find(global_prefs.default_group_id).unit.pluralize, :size => 5 %>
-    <%= f.control_group :reserve do %>
-      <%= f.check_box :reserve, label: 'Reserve?' %>
-    <% end %>
+    <%= f.check_box :reserve, label: 'Reserve?' %>
     <%= f.text_field :reserve_percent, label: 'Reserve Percent', :help => '(must be between 0 and 1)', :size => 5 %>
     <%= f.submit t('button_update'), class: 'btn btn-primary' %>
   <% end %>

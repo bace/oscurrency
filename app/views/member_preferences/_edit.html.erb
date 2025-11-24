@@ -7,9 +7,9 @@
 <%= bootstrap_form_for @member_preference, :html => {:class => 'form-horizontal edit_member_preference'} do |f| %>
     <div style='padding-left:10px;'>
       <%= f.check_box :forum_notifications, label: t('people.edit.forum_posts') %>
-      <%= f.actions do %>
+      <div class="form-group">
         <%= f.primary "Update" %><%= waiting_image %>
-      <% end %>
+      </div>
     </div>
 <% end %>
 </div>
