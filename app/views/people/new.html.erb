@@ -74,7 +74,7 @@
   </div>
 </div>
 <div class="col-sm-6">
-  <div class="form-group">
+  <div class="form-group description-text-area">
     <%= f.label :description, t('people.new.something_about_yourself'), class: 'control-label col-sm-3' %>
     <div class="col-sm-9" style="padding-top: 10px;">
       <%= f.text_area :description, rows: 6, hide_label: true %>
@@ -89,7 +89,7 @@
 
   <div class="form-group">
     <%= f.label :zipcode, t('people.new.zipcode'), class: 'control-label col-sm-3' %>
-    <div class="col-sm-9">
+    <div class="col-sm-9 zipcode-field">
       <%= f.text_field :zipcode, hide_label: true %>
     </div>
   </div>

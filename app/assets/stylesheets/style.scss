@@ -21,6 +21,33 @@
   margin-top: 15px;
 }
 
+#new_person input[name="person[zipcode]"] {
+  max-width: 50%;
+}
+
+/* Mobile-specific fixes for signup form fields */
+@media (max-width: 767px) {
+  #new_person .language-select:first-child,
+  #new_person .description-text-area:first-child {
+    margin-left: 3px;
+  }
+
+  #creds .form-group {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  #creds .form-group .col-sm-3,
+  #creds .form-group .col-sm-9 {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  #new_person .zipcode-field {
+    margin-left: 15px;
+  }
+}
+
 /* Ensure select boxes stay within their containers */
 .controls select,
 .col-sm-9 select {
