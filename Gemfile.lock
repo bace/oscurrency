@@ -7,13 +7,6 @@ GIT
       mime-types
       xml-simple
 
-GIT
-  remote: https://github.com/herestomwiththeweather/bootstrap_form.git
-  revision: 620c99e0dae8b307b3c8f1ebfa9d2f8649d96c3c
-  branch: v1_0_patch_for_rails4_2
-  specs:
-    bootstrap_form (1.0.0)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -113,6 +106,7 @@ GEM
       debug_inspector (>= 1.2.0)
     bootsnap (1.10.0)
       msgpack (~> 1.2)
+    bootstrap_form (2.1.1)
     builder (3.3.0)
     calendar_helper (0.2.6)
       open4
@@ -490,7 +484,7 @@ DEPENDENCIES
   better_errors
   binding_of_caller
   bootsnap (= 1.10.0)
-  bootstrap_form!
+  bootstrap_form (= 2.1.1)
   calendar_helper
   cancancan (= 3.2.2)
   carrierwave

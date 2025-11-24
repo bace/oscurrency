@@ -12,6 +12,46 @@
   }
 }
 
+.smaller-font {
+  font-size: 16px;
+}
+
+/* Add space above language select in signup form */
+#new_person .language-select:first-child {
+  margin-top: 15px;
+}
+
+/* Ensure select boxes stay within their containers */
+.controls select,
+.col-sm-9 select {
+  max-width: 100%;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Specifically for neighborhood and category selects */
+select[name="person[neighborhood_ids][]"],
+select[name="person[category_ids][]"] {
+  max-width: 100%;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Ensure form-group contents don't overflow their containers */
+.form-group {
+  overflow: hidden;
+}
+
+.form-group .controls,
+.form-group .col-sm-9 {
+  overflow: hidden;
+}
+
+/* Ensure columns respect their boundaries */
+.col-sm-6 .form-group {
+  max-width: 100%;
+}
+
 /* Styles to make container changes */
 .padded-top {
   padding-top: 20px;
