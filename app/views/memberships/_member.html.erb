@@ -1,15 +1,17 @@
 <% person = member.person %>
 <li class="vcard person">
-  <div class="profile-image">
-    <%= image_link person, :link => member, :link_options => {:class => "show-follow"}, :image_options => {:class => "photo"}, :image => :thumbnail %>
-  </div>
-  <div class="col_content">
-    <p><%= membership_link member, :class => "url fn show-follow" %>&nbsp;<%= organization_image(person) if global_prefs.display_orgicon? %></p>
-    <% if defined? short %>
-      <%= display person.listed_categories, :class => "meta" %>
-      <%= display truncate(person.description, :length => 150), :class => "muted" %>
-    <% else %>
-      <%= display person.description, :class => "note" %>
-    <% end %>
+  <div class="row">
+    <div class="col-xs-3 col-sm-1">
+      <%= image_link person, :link => member, :link_options => {:class => "show-follow"}, :image_options => {:class => "photo"}, :image => :thumbnail %>
+    </div>
+    <div class="col-xs-9 col-sm-11 member-content">
+      <p><%= membership_link member, :class => "url fn show-follow" %>&nbsp;<%= organization_image(person) if global_prefs.display_orgicon? %></p>
+      <% if defined? short %>
+        <%= display person.listed_categories, :class => "meta" %>
+        <%= display truncate(person.description, :length => 150), :class => "muted" %>
+      <% else %>
+        <%= display person.description, :class => "note" %>
+      <% end %>
+    </div>
   </div>
 </li>

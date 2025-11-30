@@ -151,6 +151,9 @@ ul li.profile_icon_item {
   margin-bottom: 0;
   margin-left: 102px;
 }
+.member-content p {
+  margin-left: 0;
+}
 .list .forum p {
   margin-bottom: 1em;
 
