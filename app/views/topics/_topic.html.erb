@@ -1,20 +1,24 @@
 <li class="topic topic_id_<%= topic.id %>">
-  <a name="topic_<%= topic.id %>"></a>
-  <div class="profile-image">
-    <%= image_link topic.person, :image => :thumbnail %>
-    <%= image_tag "icons/new.gif", :class => "icon", :alt => "Topic" %>
+  <div class="row">
+    <a name="topic_<%= topic.id %>"></a>
+    <div class="col-xs-3 col-sm-1">
+      <%= image_link topic.person, :image => :thumbnail %>
+    </div>
+    <div class="col-xs-9 col-sm-11 member-content">
+      <p>
+        <%= image_tag "icons/new.gif", :class => "icon", :alt => "Topic" %>
+        <%= link_to h(topic.name),
+                    forum_topic_path(topic.forum, topic),
+                    :class => "show-follow" %>
+        <span class="meta">(<%= t('topics.post', :count => topic.posts.count) %>)</span>
+      </p>
+      <p class="meta">
+      <%= t('topics.partial.created_by') %> <%= person_link topic.person %>
+      <%= t('ago_time', :date => time_ago_in_words(topic.created_at)) %>
+        <%- if can? :destroy, topic -%>
+          <%= link_to t('button_delete'), forum_topic_path(topic.forum, topic), :class => "delete_topic" %>
+        <%- end -%>
+      </p>
+    </div>
   </div>
-  <p>
-  <%= link_to h(topic.name), 
-              forum_topic_path(topic.forum, topic),
-              :class => "show-follow" %>
-  <span class="meta">(<%= t('topics.post', :count => topic.posts.count) %>)</span>
-  </p>
-  <p class="meta">
-  <%= t('topics.partial.created_by') %> <%= person_link topic.person %>
-  <%= t('ago_time', :date => time_ago_in_words(topic.created_at)) %> 
-    <%- if can? :destroy, topic -%>
-      <%= link_to t('button_delete'), forum_topic_path(topic.forum, topic), :class => "delete_topic" %>
-    <%- end -%>
-  </p>
 </li>
