@@ -1,17 +1,21 @@
 <li>
-<div class="profile-image">
-  <% cp = counterparty(transact) %>
-  <% if defined? ajaxified %>
-    <%= image_link cp, :image => :thumbnail, :link => Membership.mem(cp,@group), :link_options => {:class => "show-follow"} %>
-  <% else %>
-    <%= image_link cp, :image => :thumbnail %>
-  <% end %>
-  <%= image_tag "icons/switch.gif", :class => "icon", :alt => "Transaction" %>
-</div>
-  <p>
-  <%= counterparty_action(transact) %><%= counterparty_link(cp, @group, defined? ajaxified) %>) <%= t('shared.transact.for')%> <%= link_to h(transact.metadata.name), transact.metadata %>
-  </p>
-  <p class="meta published">
-    <%= transact.created_at.strftime(current_datetime_format) %>
-  </p>
+  <div class="row">
+    <div class="col-xs-4 col-sm-2">
+      <% cp = counterparty(transact) %>
+      <% if defined? ajaxified %>
+        <%= image_link cp, :image => :thumbnail, :link => Membership.mem(cp,@group), :link_options => {:class => "show-follow"} %>
+      <% else %>
+        <%= image_link cp, :image => :thumbnail %>
+      <% end %>
+    </div>
+    <div class="col-xs-8 col-sm-10 member-content">
+      <p>
+        <%= image_tag "icons/switch.gif", :class => "icon", :alt => "Transaction" %>
+        <%= counterparty_action(transact) %><%= counterparty_link(cp, @group, defined? ajaxified) %>) <%= t('shared.transact.for')%> <%= link_to h(transact.metadata.name), transact.metadata %>
+      </p>
+      <p class="meta published">
+        <%= transact.created_at.strftime(current_datetime_format) %>
+      </p>
+    </div>
+  </div>
 </li>

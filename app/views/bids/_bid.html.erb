@@ -7,38 +7,42 @@
  %>
 <% if can? :read, bid %>
   <li class="bid bid_id_<%= bid.id %>">
-  <a name="bid_<%= bid.id %>"></a>
-  <div class="profile-image">
-    <%= image_link bid.person, :image => :thumbnail %>
-    <%= image_tag "icons/new.gif", :class => "icon", :alt => "Bid" %>
-  </div>
-  <% if bid.req %>
-    <% if (dashboard rescue false) %><%= t('for') %> <%= link_to h(bid.req.name), bid.req, :class => "show-follow" %><% end %>
-    <%= form_for :bid, :url => req_bid_path(bid.req, bid), :html => {:method => :put, :class => 'edit_bid'} do |f| %>
-      <% if current_person?(bid.req.person) && bid.requestor_event_for_current_state %>
-        <%= hidden_field_tag :aasm_event, bid.requestor_event_for_current_state %>
-        <%= f.submit bid.requestor_event_for_current_state, class: 'btn bid-action' %><%= waiting_image %>
-      <% elsif current_person?(bid.person) && bid.bidder_event_for_current_state %>
-        <%= hidden_field_tag :aasm_event, bid.bidder_event_for_current_state %>
-        <%= f.submit bid.bidder_event_for_current_state, class: 'btn bid-action' %><%= waiting_image %>
+    <a name="bid_<%= bid.id %>"></a>
+  <div class="row">
+    <div class="col-xs-4 col-sm-2">
+      <%= image_link bid.person, :image => :thumbnail %>
+    </div>
+    <div class="col-xs-8 col-sm-10 member-content">
+      <%= image_tag "icons/new.gif", :class => "icon", :alt => "Bid" %>
+      <% if bid.req %>
+        <% if (dashboard rescue false) %><%= t('for') %> <%= link_to h(bid.req.name), bid.req, :class => "show-follow" %><% end %>
+        <%= form_for :bid, :url => req_bid_path(bid.req, bid), :html => {:method => :put, :class => 'edit_bid'} do |f| %>
+          <% if current_person?(bid.req.person) && bid.requestor_event_for_current_state %>
+            <%= hidden_field_tag :aasm_event, bid.requestor_event_for_current_state %>
+            <%= f.submit bid.requestor_event_for_current_state, class: 'btn bid-action' %><%= waiting_image %>
+          <% elsif current_person?(bid.person) && bid.bidder_event_for_current_state %>
+            <%= hidden_field_tag :aasm_event, bid.bidder_event_for_current_state %>
+            <%= f.submit bid.bidder_event_for_current_state, class: 'btn bid-action' %><%= waiting_image %>
+          <%- end -%>
+        <%- end -%>
       <%- end -%>
-    <%- end -%>
-  <%- end -%>
-  <p>
-  <%= h bid.unit&.pluralize %> <%= t('bid') %>: <%= h bid.estimated_hours %> - <%= t('bids.bid.expires') %> <%= relative_time_ago_in_words(bid.expiration_date) %>
-  </p>
-  <p class="meta">
-  <% if bid.state != 'offered' %><%= t('bids.bid.accepted') %> <%= t( 'ago_time', :date => time_ago_in_words(bid.accepted_at)) -%> <br><% end %>   <%= t('bids.bid.submitted') %><% unless (dashboard rescue false) %><%= t('by') %> <%= person_link bid.person %><% end %>
-  <%= t( 'ago_time', :date => time_ago_in_words(bid.created_at)) %>
-  <% if bid.req %>
-    <% if can? :destroy, bid -%>
-      | <%= link_to t('button_delete'), req_bid_path(bid.req,bid), :class => 'delete_bid' %>
-    <% end -%>
-    <br>
-    <% if current_person?(bid.req.person) && !current_person.address.nil? && !bid.person.address.nil? && !current_person?(bid.person) -%>
-      <%= number_with_precision(bid.person.address.distance_to(current_person.address), :precision => 1).to_s %> <%= t('miles_away') %>
-    <% end -%>
-  <% end -%>
-  </p>
+      <p>
+      <%= h bid.unit&.pluralize %> <%= t('bid') %>: <%= h bid.estimated_hours %> - <%= t('bids.bid.expires') %> <%= relative_time_ago_in_words(bid.expiration_date) %>
+      </p>
+      <p class="meta">
+      <% if bid.state != 'offered' %><%= t('bids.bid.accepted') %> <%= t( 'ago_time', :date => time_ago_in_words(bid.accepted_at)) -%> <br><% end %>   <%= t('bids.bid.submitted') %><% unless (dashboard rescue false) %><%= t('by') %> <%= person_link bid.person %><% end %>
+      <%= t( 'ago_time', :date => time_ago_in_words(bid.created_at)) %>
+      <% if bid.req %>
+        <% if can? :destroy, bid -%>
+          | <%= link_to t('button_delete'), req_bid_path(bid.req,bid), :class => 'delete_bid' %>
+        <% end -%>
+        <br>
+        <% if current_person?(bid.req.person) && !current_person.address.nil? && !bid.person.address.nil? && !current_person?(bid.person) -%>
+          <%= number_with_precision(bid.person.address.distance_to(current_person.address), :precision => 1).to_s %> <%= t('miles_away') %>
+        <% end -%>
+      <% end -%>
+      </p>
+    </div>
+  </div>
 </li>
 <% end %>
