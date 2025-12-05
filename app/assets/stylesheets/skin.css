@@ -1,10 +1,19 @@
 /* Main layout */
 
-body {padding-top: 65px;}
+/* Padding for fixed navbar */
+body {
+  padding-top: 120px; /* Accommodate navbar when it wraps on medium screens */
+}
 
-@media (max-width: 979px) {
+@media (min-width: 1200px) {
   body {
-      padding-top: 0px;
+    padding-top: 70px; /* Single-line navbar on large screens */
+  }
+}
+
+@media (max-width: 767px) {
+  body {
+    padding-top: 60px; /* Collapsed navbar on mobile */
   }
 }
 
