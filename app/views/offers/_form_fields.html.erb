@@ -1,4 +1,5 @@
-<div class="col-sm-5">
+<div class="row">
+<div class="col-sm-6">
   <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
   <%= f.text_field :name, :label => t("title"), :size => 40, :maxlength => 255 %>
   <%= f.text_area :description, :label => t("description"), :help => t('offers.new.description_label'), :rows => 5 %>
@@ -9,7 +10,7 @@
     </div>
   </div>
 </div>
-<div class="col-sm-5">
+<div class="col-sm-6">
   <%= f.text_field :price,  :value=> nice_decimal(f.object.price),  :label => t('price'), :help => @group.unit || Group.find(global_prefs.default_group_id).unit, :size => 5 %>
   <%= f.text_field :expiration_date, :label => t('expiration_date'), :size => 7 %>
   <%= f.text_field :available_count, :label => t('offers.new.available_count'), :size => 2 %>
@@ -25,4 +26,5 @@
   <div class="form-group">
     <%= f.primary submit_text %><%= waiting_image %>
   </div>
+</div>
 </div>

@@ -1,4 +1,5 @@
-<div class="col-sm-5">
+<div class="row">
+<div class="col-sm-6">
   <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
   <%= f.text_field :name, :label => t('title'), :size => 40, :maxlength => 255 %>
   <%= f.text_area :description, :label => t('description'), :rows => 5 %>
@@ -9,7 +10,7 @@
     </div>
   </div>
 </div>
-<div class="col-sm-5">
+<div class="col-sm-6">
   <%= f.text_field :estimated_hours, :value=> nice_decimal(f.object.estimated_hours), :label => t('estimated') + ' ' + t('payment'), :help => @group.unit&.pluralize || Group.find(global_prefs.default_group_id).unit.pluralize, :size => 5, :disabled => estimate_disabled %>
   <%= f.text_field :respond_by_date, :label => t('respond_by'), :size => 7 %>
   <%= f.text_field :due_date, :label => t('due_date'), :size => 7 %>
@@ -22,13 +23,16 @@
       <%= render :partial => "shared/select_neighborhoods", :locals => { :model_name => 'req' } %>
     </div>
   </div>
-  <% if notify_members %>
-    <%= f.check_box :notifications, checked: true, label: t('reqs.new.notify_members_email') %>
-  <% end %>
-  <% if PublicBid.open? %>
-    <%= f.check_box :public_bid, checked: f.object.public_bid || false, label: t('reqs.new.public_bid') %>
-  <% end %>
+  <div class="form-group">
+    <% if notify_members %>
+      <%= f.check_box :notifications, checked: true, label: t('reqs.new.notify_members_email') %>
+    <% end %>
+    <% if PublicBid.open? %>
+      <%= f.check_box :public_bid, checked: f.object.public_bid || false, label: t('reqs.new.public_bid') %>
+    <% end %>
+  </div>
   <div class="form-group">
     <%= f.primary submit_text %><%= waiting_image %>
   </div>
+</div>
 </div>
