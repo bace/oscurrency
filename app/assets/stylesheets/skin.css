@@ -60,6 +60,26 @@ body {
   }
 }
 
+/* Bootstrap 3 tab pane spacing */
+.tab-pane {
+  padding-top: 15px; /* Add vertical space between tabs and content */
+}
+
+/* Bootstrap 3 h2 elements - restore bold weight */
+h2 {
+  font-weight: bold;
+}
+
+/* Bootstrap 3 select elements - add proper styling */
+select {
+  background-color: #fff;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  height: 34px;
+  line-height: 1.42857143;
+}
+
 pre.debug_dump pre {
   display: inline;
   padding: 0;
