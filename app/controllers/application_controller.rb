@@ -67,7 +67,7 @@ class ApplicationController < ActionController::Base
       {notice: 'alert-success',
        success: 'alert-success',
        error: 'alert-danger',
-       alert: 'alert-info'}[flash_key] || ''
+       alert: 'alert-info'}[flash_key.to_sym] || ''
     end
 
     def logged_in?
