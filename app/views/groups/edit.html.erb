@@ -6,7 +6,7 @@
       <fieldset>
         <legend><%= t('.group_data') %></legend>
         <div class="row">
-          <div class="col-sm-3">
+          <div class="col-sm-6">
             <%= f.text_field :name, label: t('.name'), class: "col-sm-3" %>
             <%= f.text_area :description, label: t('.description'), class: "col-sm-3", rows: 10 %>
             <%= t('.default_member_roles') %></br>
@@ -16,7 +16,7 @@
             <% end %>
             <%= hidden_field_tag "group[default_roles][]", "" %>
           </div>
-          <div class="col-sm-3">
+          <div class="col-sm-6">
 
             <%- if @group.adhoc_currency? -%>
               <%= f.text_field :unit, label: t('.currency_unit_singular'), class: "col-sm-3" %>

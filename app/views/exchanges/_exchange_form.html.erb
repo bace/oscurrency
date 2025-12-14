@@ -6,12 +6,12 @@
     <%- if @customer_id.present? %>
       <%= f.hidden_field :customer_id, :value => @customer_id %>
     <%- end %>
-    <%= f.text_field :amount, :value=> nice_decimal(f.object.amount), label: t('exchanges.new.amount'), help: @group.unit.pluralize, size: 2 %>
+    <%= f.text_field :amount, :value=> nice_decimal(f.object.amount), label: t('exchanges.new.amount'), append: @group.unit.pluralize, size: 2 %>
     <%= fields_for :req do |r| %>
       <div class="form-group">
         <%= r.label t('exchanges.new.service_provided'), :class => 'control-label' %>
         <div class="controls">
-          <%= r.text_field :name, placeholder: t('exchanges.new.enter_description') %>
+          <%= r.text_field :name, placeholder: t('exchanges.new.enter_description'), class: 'form-control' %>
         </div>
       </div>
     <% end %>

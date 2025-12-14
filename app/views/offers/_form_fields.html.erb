@@ -11,7 +11,7 @@
   </div>
 </div>
 <div class="col-sm-6">
-  <%= f.text_field :price,  :value=> nice_decimal(f.object.price),  :label => t('price'), :help => @group.unit || Group.find(global_prefs.default_group_id).unit, :size => 5 %>
+  <%= f.text_field :price,  :value=> nice_decimal(f.object.price),  :label => t('price'), :append => @group.unit || Group.find(global_prefs.default_group_id).unit, :wrapper => { :class => 'form-group-price' } %>
   <%= f.text_field :expiration_date, :label => t('expiration_date'), :size => 7 %>
   <%= f.text_field :available_count, :label => t('offers.new.available_count'), :size => 2 %>
   <%= f.fields_for :photos do |i| %> 

@@ -65,8 +65,8 @@ body {
   padding-top: 15px; /* Add vertical space between tabs and content */
 }
 
-/* Bootstrap 3 h2 elements - restore bold weight */
-h2 {
+/* Bootstrap 3 h2, h3, h4 elements - restore bold weight */
+h2, h3, h4 {
   font-weight: bold;
 }
 
@@ -612,4 +612,31 @@ input#person_openid_identifier, input#person_session_openid_identifier {
   padding-left: 35px !important;
   background-image: url(/assets/32px-Magnifying-glass.svg.png);
   background-repeat: no-repeat;
+}
+
+/* Add horizontal padding to forms on mobile devices */
+@media (max-width: 767px) {
+  .form-horizontal .row {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}
+
+/* Limit width of price field */
+.form-group-price .form-control {
+  width: 120px;
+  display: inline-block;
+}
+
+.form-group-price .input-group {
+  width: auto;
+  display: inline-block;
+}
+
+/* Ensure message form label displays above textarea */
+.form_row label[for="message_body"] {
+  display: block !important;
+  float: none !important;
+  width: 100%;
+  margin-bottom: 5px;
 }
