@@ -308,7 +308,7 @@ GEM
       method_source (~> 1.0)
     public_suffix (5.1.1)
     racc (1.8.1)
-    rack (2.2.10)
+    rack (2.2.23)
     rack-contrib (2.5.0)
       rack (< 4)
     rack-pjax (1.1.0)
