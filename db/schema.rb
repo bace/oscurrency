@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2025_01_30_055709) do
+ActiveRecord::Schema.define(version: 2026_05_04_212931) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -586,6 +586,7 @@ ActiveRecord::Schema.define(version: 2025_01_30_055709) do
     t.boolean "openid", default: true
     t.integer "admin_contact_id"
     t.string "app_name_notifications", default: ""
+    t.string "agreement_label", default: ""
   end
 
   create_table "privacy_settings", id: :serial, force: :cascade do |t|

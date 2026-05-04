@@ -289,6 +289,7 @@ end
       end
       field :registration_intro
       field :agreement
+      field :agreement_label
       field :about
       field :practice
       field :steps

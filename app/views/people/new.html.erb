@@ -70,7 +70,7 @@
       <div class="controls">
         <label class="checkbox" for="person_accept_agreement">
           <input name="person[accept_agreement]" type="hidden" value="0" />
-          <input type="checkbox" value="1" name="person[accept_agreement]" id="person_accept_agreement" /> <%= t('people.new.i_accept_the') %> <a target="_blank" class="small" href="/agreement"><%= t('people.new.member_agreeement') %></a>
+          <input type="checkbox" value="1" name="person[accept_agreement]" id="person_accept_agreement" /> <%= t('people.new.i_accept_the') %> <a target="_blank" class="small" href="/agreement"><%= global_prefs.agreement_label.blank? ? t('people.new.member_agreement') : global_prefs.agreement_label %></a>
         </label>
       </div>
     </div>

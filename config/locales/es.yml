@@ -286,6 +286,8 @@ es:
   people:
     edit:
       header: "Editar el perfil"
+      business_details: "Datos de la organización"
+      business_account: "Esta es una cuenta de organización."
       personal_details: "Detalles personales"
       name: "Nombre"
       share_phone_number: "Compartir número teléfono"
@@ -332,6 +334,7 @@ es:
       no_invitations: "Todavía no hay invitaciones"
     new:
       header: "Registro"
+      business_account: "Esta es una cuenta de organización."
       email_address: "Correo electrónico"
       comma_will_be_verified: ", será verificado"
       never_made_public: "nunca se publicará"
