@@ -225,6 +225,8 @@ fr:
     new_photo:
       header: "Publier une photo de groupe"
       upload_a_photo: "Publier une photo"
+      delete_pending: "Cliquez sur « %{button} » pour terminer la suppression de cette photo."
+      undo_delete: "Annuler"
     show:
       contact: "Contact"
       header: "Groupe"

@@ -155,7 +155,7 @@ class OffersController < ApplicationController
 
   private
   def offer_params
-    params.require(:offer).permit(:name, :description, :price, :expiration_date, :available_count, {:category_ids => [], :neighborhood_ids => [], :photos_attributes => [:picture]})
+    params.require(:offer).permit(:name, :description, :price, :expiration_date, :available_count, {:category_ids => [], :neighborhood_ids => [], :photos_attributes => [:id, :picture, :_destroy]})
   end
 
   def correct_person_required

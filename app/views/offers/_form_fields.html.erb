@@ -13,8 +13,21 @@
   <%= f.text_field :price,  :value=> nice_decimal(f.object.price),  :label => t('price'), :help => @group.unit || Group.find(global_prefs.default_group_id).unit, :size => 5 %>
   <%= f.text_field :expiration_date, :label => t('expiration_date'), :size => 7 %>
   <%= f.text_field :available_count, :label => t('offers.new.available_count'), :size => 2 %>
-  <%= f.fields_for :photos do |i| %> 
-    <%= i.file_field :picture, label: t('groups.new_photo.upload_a_photo') %> 
+  <%= f.fields_for :photos do |i| %>
+    <div class="photo_fields">
+      <% if i.object.persisted? && i.object.picture.present? %>
+        <div class="controls">
+          <%= image_tag i.object.picture_url(:thumbnail), :alt => i.object.picture.file.filename %>
+          <%= i.hidden_field :_destroy, :class => 'destroy_photo' %>
+          <%= link_to image_tag("icons/close.gif"), '#', :class => 'delete_photo' %>
+          <span class="photo_delete_pending" style="display: none;">
+            <%= t('groups.new_photo.delete_pending', :button => t('button_update')) %>
+            <%= link_to t('groups.new_photo.undo_delete'), '#', :class => 'undo_delete_photo' %>
+          </span>
+        </div>
+      <% end %>
+      <%= i.file_field :picture, label: t('groups.new_photo.upload_a_photo') %>
+    </div>
   <% end %>
   <div class="control-group">
     <%= f.label t('filter_neighborhoods'), :class => 'control-label' %>

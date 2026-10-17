@@ -282,6 +282,29 @@ $(function() {
       return false;
     });
 
+  $('.delete_photo').live('click', function() {
+      if(confirm('Delete?'))
+      {
+        var photo_fields = $(this).closest('.photo_fields');
+        photo_fields.find('.destroy_photo').val('1');
+        photo_fields.find('img').not('.delete_photo img').css('opacity', 0.4);
+        photo_fields.find('input[type=file]').attr('disabled', true);
+        $(this).hide();
+        photo_fields.find('.photo_delete_pending').show();
+      }
+      return false;
+    });
+
+  $('.undo_delete_photo').live('click', function() {
+      var photo_fields = $(this).closest('.photo_fields');
+      photo_fields.find('.destroy_photo').val('false');
+      photo_fields.find('img').not('.delete_photo img').css('opacity', 1);
+      photo_fields.find('input[type=file]').attr('disabled', false);
+      photo_fields.find('.delete_photo').show();
+      photo_fields.find('.photo_delete_pending').hide();
+      return false;
+    });
+
   $('.deactivate_req').live('click', function() {
     var data = {'_method': 'deactivate'}
     $.post($(this).attr('href'),data,null,'script');

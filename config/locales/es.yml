@@ -170,6 +170,8 @@ es:
     new_photo:
       header: "Descargar un grupo de fotografías"
       upload_a_photo: "Enviar una foto:"
+      delete_pending: "Haga clic en \"%{button}\" para terminar de borrar esta foto."
+      undo_delete: "Deshacer"
     show:
       header: "Grupo:"
       blank_description: "La descripción del grupo esta en blanco."

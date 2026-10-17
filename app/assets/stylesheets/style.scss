@@ -29,6 +29,16 @@
   }
 }
 
+/* Req/offer edit form: keep a wrapped delete message beside the thumbnail */
+.photo_fields .controls {
+  display: flex;
+  align-items: center;
+
+  .delete_photo, .photo_delete_pending {
+    margin-left: 8px;
+  }
+}
+
 /* Style for People */
 .activity-container{
   margin-top: 10px;

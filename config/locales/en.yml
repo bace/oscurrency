@@ -201,6 +201,8 @@ en:
     new_photo:
       header: "Group photo upload"
       upload_a_photo: "Upload a photo:"
+      delete_pending: "Click \"%{button}\" to finish deleting this photo."
+      undo_delete: "Undo"
     show:
       contact: "Contact"
       header: "Group:"
