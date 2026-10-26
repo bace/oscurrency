@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2026_05_04_212931) do
+ActiveRecord::Schema.define(version: 2026_10_25_230925) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -133,6 +133,8 @@ ActiveRecord::Schema.define(version: 2026_05_04_212931) do
     t.string "state", limit: 255
     t.text "private_message_to_requestor"
     t.integer "group_id"
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_bids_on_deleted_at"
   end
 
   create_table "broadcast_emails", id: :serial, force: :cascade do |t|

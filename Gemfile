@@ -44,6 +44,7 @@ gem "rmagick", '2.16.0'
 gem "json"
 gem "geokit-rails", "2.5.0"
 gem "i18n", "1.8.11" # carrierwave 2.2.3 does not like 1.9.x
+gem "discard"
 
 gem "will_paginate", '3.3.1'
 gem "aasm", '3.0.19'

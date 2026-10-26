@@ -43,6 +43,10 @@ module ReqsHelper
     req.approved_bids.map {|bid| "Confirmed completed by #{person_link req.person} #{time_ago_in_words(bid.approved_at)} #{t('ago')}"}
   end
 
+  def deleted_messages(req)
+    req.bids.discarded.map {|bid| "Bid deleted by #{person_link bid.person} #{time_ago_in_words(bid.deleted_at)} #{t('ago')}"}
+  end
+
   # 
   # function `horizontal_formatted_req_categories` outputs an html string
   # that includes a prefix ( ie: Listed in: ) enclosed in <span> tags and the

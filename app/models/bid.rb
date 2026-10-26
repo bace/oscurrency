@@ -22,6 +22,9 @@
 class Bid < ApplicationRecord
   include Rails.application.routes.url_helpers
   include AASM
+  include Discard::Model
+
+  self.discard_column = :deleted_at
 
   extend PreferencesHelper
   before_validation :setup, :on => :create
@@ -47,19 +50,19 @@ class Bid < ApplicationRecord
   aasm_state :approved, :enter => :trigger_approved
 
   aasm_event :accept do
-    transitions :to => :accepted, :from => :offered
+    transitions :to => :accepted, :from => :offered, :guard => :kept?
   end
 
   aasm_event :commit do
-    transitions :to => :committed, :from => :accepted
+    transitions :to => :committed, :from => :accepted, :guard => :kept?
   end
 
   aasm_event :complete do
-    transitions :to => :completed, :from => :committed
+    transitions :to => :completed, :from => :committed, :guard => :kept?
   end
 
   aasm_event :pay do
-    transitions :to => :approved, :from => [:accepted, :committed, :completed]
+    transitions :to => :approved, :from => [:accepted, :committed, :completed], :guard => :kept?
   end
 
   def requestor_event_for_current_state

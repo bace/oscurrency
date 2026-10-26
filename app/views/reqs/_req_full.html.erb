@@ -88,6 +88,7 @@
         <%= render :partial => "shared/bid_message", :collection => completed_messages(@req)  %>
         <%= render :partial => "shared/bid_message", :collection => commitment_messages(@req) %>
         <%= render :partial => "shared/bid_message", :collection => accepted_messages(@req)   %>
+        <%= render :partial => "shared/bid_message", :collection => deleted_messages(@req)   %>
       </div>
 
       <!-- list of current bids -->

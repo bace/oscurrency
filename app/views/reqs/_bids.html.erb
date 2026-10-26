@@ -3,13 +3,13 @@
 </h3>
 
 <ul class="list full bids">
-<% if @req.bids.empty? -%>
+<% if @req.bids.kept.empty? -%>
   <!-- There are no bids! -->
   <h5 class="blankslate">
     <%= t('reqs.show.nobids') %>
   </h5>
 <% else %>
   <!-- Dislaying list of bids! -->
-    <%= render :partial => "/bids/bid", :collection => @req.bids %>
+    <%= render :partial => "/bids/bid", :collection => @req.bids.kept %>
 <% end %>
 </ul>

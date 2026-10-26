@@ -148,6 +148,8 @@ GEM
     date (3.4.1)
     debug_inspector (1.2.0)
     diff-lcs (1.5.1)
+    discard (1.4.0)
+      activerecord (>= 4.2, < 9.0)
     dotenv (2.8.1)
     dotenv-rails (2.8.1)
       dotenv (= 2.8.1)
@@ -498,6 +500,7 @@ DEPENDENCIES
   concurrent-ruby (= 1.3.4)
   dalli (= 2.7.6)
   database_cleaner
+  discard
   dotenv-rails
   exception_notification
   feed-normalizer

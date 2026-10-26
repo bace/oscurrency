@@ -2,6 +2,7 @@ class BidsController < ApplicationController
   before_action :login_required
   load_resource :req
   load_and_authorize_resource :bid, :through => :req
+  before_action :reject_discarded_bid, :only => :update
 
   # POST /bids
   # POST /bids.xml
@@ -57,7 +58,7 @@ class BidsController < ApplicationController
   # DELETE /bids/1
   # DELETE /bids/1.xml
   def destroy
-    @bid.destroy
+    @bid.discard
 
     respond_to do |format|
       flash[:success] = t('notice_bid_removed')
@@ -68,6 +69,16 @@ class BidsController < ApplicationController
   end
 
   private
+    def reject_discarded_bid
+      if @bid.discarded?
+        flash[:error] = t('notice_bid_removed')
+        respond_to do |format|
+          format.html { redirect_to @req }
+          format.js { render :update }
+        end
+      end
+    end
+
     def bid_params
       params.require(:bid).permit(:estimated_hours, :expiration_date, :private_message_to_requestor)
     end
