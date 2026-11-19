@@ -22,7 +22,7 @@ class Offer < ApplicationRecord
   end
 
   def calculate_amount(count)
-    return nil unless (count.blank? or count.is_a?(Fixnum))
+    return nil unless (count.blank? or count.is_a?(Integer))
     if count.blank?
       price
     else

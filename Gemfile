@@ -1,7 +1,7 @@
 #!/usr/bin/ruby
 
 source 'https://rubygems.org'
-ruby "3.1.0"
+ruby "3.3.14"
 gem 'rails', '6.1.7.10'
 gem 'responders'
 
