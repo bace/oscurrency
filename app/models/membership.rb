@@ -37,11 +37,9 @@ class Membership < ApplicationRecord
     # The following sql is for getting business_name + name
     # case when people.business_name is null then '' else people.business_name end) || people.name
     def custom_search(category,group,page,posts_per_page,search=nil)
-      unless category
-        group.memberships.includes(:person).accepted.active.verified.order_by_name.search_by(search).paginate(:page => page, :per_page => posts_per_page)
-      else
-        category.people.where(deactivated: false).joins(:memberships).where(:memberships => {:group_id => group.id, :status => Membership::ACCEPTED}).select("people.*,memberships.id as categorized_membership").map {|p| Membership.find(p.categorized_membership)}.paginate(:page => page, :per_page => posts_per_page)
-      end
+      memberships = group.memberships.includes(:person).accepted.active.verified
+      memberships = memberships.where(person_id: category.people.select(:id)) if category
+      memberships.order_by_name.search_by(search).paginate(:page => page, :per_page => posts_per_page)
     end
   end
 
